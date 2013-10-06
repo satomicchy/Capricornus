@@ -1,0 +1,39 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Name:</strong>
+  <%= @custom.name %>
+</p>
+
+<p>
+  <strong>Address:</strong>
+  <%= @custom.address %>
+</p>
+
+<p>
+  <strong>Tel:</strong>
+  <%= @custom.tel %>
+</p>
+
+<p>
+  <strong>Fax:</strong>
+  <%= @custom.fax %>
+</p>
+
+<p>
+  <strong>President:</strong>
+  <%= @custom.president %>
+</p>
+
+<p>
+  <strong>Zip:</strong>
+  <%= @custom.zip %>
+</p>
+
+<p>
+  <strong>Email:</strong>
+  <%= @custom.email %>
+</p>
+
+<%= link_to 'Edit', edit_custom_path(@custom) %> |
+<%= link_to 'Back', customs_path %>
