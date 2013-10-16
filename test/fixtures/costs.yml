@@ -1,0 +1,13 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/Fixtures.html
+
+one:
+  count: 1
+  unit: MyString
+  unit_price: 1
+  journal_id: 1
+
+two:
+  count: 1
+  unit: MyString
+  unit_price: 1
+  journal_id: 1

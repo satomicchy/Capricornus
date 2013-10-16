@@ -1,4 +1,6 @@
 Capricornus::Application.routes.draw do
+  resources :costs
+
   resources :journals
 
   resources :banks
