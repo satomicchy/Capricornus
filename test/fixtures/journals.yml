@@ -1,0 +1,21 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/Fixtures.html
+
+one:
+  work_on: 2013-10-16 17:06:36
+  content: MyText
+  city: MyString
+  custom_id: 1
+  travel_expenses: false
+  complete: false
+  invoice_id: 1
+  user_id: 1
+
+two:
+  work_on: 2013-10-16 17:06:36
+  content: MyText
+  city: MyString
+  custom_id: 1
+  travel_expenses: false
+  complete: false
+  invoice_id: 1
+  user_id: 1

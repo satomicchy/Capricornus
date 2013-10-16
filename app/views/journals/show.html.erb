@@ -1,0 +1,44 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Work on:</strong>
+  <%= @journal.work_on %>
+</p>
+
+<p>
+  <strong>Content:</strong>
+  <%= @journal.content %>
+</p>
+
+<p>
+  <strong>City:</strong>
+  <%= @journal.city %>
+</p>
+
+<p>
+  <strong>Custom:</strong>
+  <%= @journal.custom_id %>
+</p>
+
+<p>
+  <strong>Travel expenses:</strong>
+  <%= @journal.travel_expenses %>
+</p>
+
+<p>
+  <strong>Complete:</strong>
+  <%= @journal.complete %>
+</p>
+
+<p>
+  <strong>Invoice:</strong>
+  <%= @journal.invoice_id %>
+</p>
+
+<p>
+  <strong>User:</strong>
+  <%= @journal.user_id %>
+</p>
+
+<%= link_to 'Edit', edit_journal_path(@journal) %> |
+<%= link_to 'Back', journals_path %>
