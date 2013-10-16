@@ -1,4 +1,6 @@
 Capricornus::Application.routes.draw do
+  resources :estimates
+
   resources :invoices
 
   resources :costs

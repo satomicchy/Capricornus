@@ -1,0 +1,19 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/Fixtures.html
+
+one:
+  number: MyString
+  title: MyString
+  deadline: 2013-10-16
+  requirement: MyString
+  custom_id: 1
+  memo: MyText
+  summary: 1
+
+two:
+  number: MyString
+  title: MyString
+  deadline: 2013-10-16
+  requirement: MyString
+  custom_id: 1
+  memo: MyText
+  summary: 1

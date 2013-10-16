@@ -1,0 +1,39 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Number:</strong>
+  <%= @estimate.number %>
+</p>
+
+<p>
+  <strong>Title:</strong>
+  <%= @estimate.title %>
+</p>
+
+<p>
+  <strong>Deadline:</strong>
+  <%= @estimate.deadline %>
+</p>
+
+<p>
+  <strong>Requirement:</strong>
+  <%= @estimate.requirement %>
+</p>
+
+<p>
+  <strong>Custom:</strong>
+  <%= @estimate.custom_id %>
+</p>
+
+<p>
+  <strong>Memo:</strong>
+  <%= @estimate.memo %>
+</p>
+
+<p>
+  <strong>Summary:</strong>
+  <%= @estimate.summary %>
+</p>
+
+<%= link_to 'Edit', edit_estimate_path(@estimate) %> |
+<%= link_to 'Back', estimates_path %>
