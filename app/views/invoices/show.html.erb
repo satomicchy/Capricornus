@@ -1,0 +1,34 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Number:</strong>
+  <%= @invoice.number %>
+</p>
+
+<p>
+  <strong>Ask on:</strong>
+  <%= @invoice.ask_on %>
+</p>
+
+<p>
+  <strong>Deadline:</strong>
+  <%= @invoice.deadline %>
+</p>
+
+<p>
+  <strong>Custom:</strong>
+  <%= @invoice.custom_id %>
+</p>
+
+<p>
+  <strong>Memo:</strong>
+  <%= @invoice.memo %>
+</p>
+
+<p>
+  <strong>Summary:</strong>
+  <%= @invoice.summary %>
+</p>
+
+<%= link_to 'Edit', edit_invoice_path(@invoice) %> |
+<%= link_to 'Back', invoices_path %>
