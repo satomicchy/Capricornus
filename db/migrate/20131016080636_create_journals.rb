@@ -8,6 +8,7 @@ class CreateJournals < ActiveRecord::Migration
       t.boolean :travel_expenses
       t.boolean :complete
       t.integer :invoice_id
+      t.integer :estimate_id
       t.integer :user_id
 
       t.timestamps

@@ -8,6 +8,7 @@ class CreateCompanies < ActiveRecord::Migration
       t.string :president
       t.string :zip
       t.string :email
+      t.integer :close_day
 
       t.timestamps
     end

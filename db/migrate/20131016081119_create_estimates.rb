@@ -8,6 +8,8 @@ class CreateEstimates < ActiveRecord::Migration
       t.integer :custom_id
       t.text :memo
       t.integer :summary
+      t.boolean :cancel
+      t.boolean :fixed
 
       t.timestamps
     end

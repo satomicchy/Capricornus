@@ -7,6 +7,8 @@ class CreateInvoices < ActiveRecord::Migration
       t.integer :custom_id
       t.text :memo
       t.integer :summary
+      t.boolean :payment
+      t.boolean :cancel
 
       t.timestamps
     end
