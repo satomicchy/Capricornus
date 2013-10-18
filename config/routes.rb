@@ -1,4 +1,5 @@
 Capricornus::Application.routes.draw do
+  devise_for :users
   resources :estimates
 
   resources :invoices
