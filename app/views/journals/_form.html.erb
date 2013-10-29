@@ -11,39 +11,42 @@
     </div>
   <% end %>
 
-  <div class="field">
-    <%= f.label :work_on %><br>
-    <%= f.datetime_select :work_on %>
-  </div>
-  <div class="field">
-    <%= f.label :content %><br>
-    <%= f.text_area :content %>
-  </div>
-  <div class="field">
-    <%= f.label :city %><br>
-    <%= f.text_field :city %>
-  </div>
-  <div class="field">
-    <%= f.label :custom_id %><br>
-    <%= f.number_field :custom_id %>
-  </div>
-  <div class="field">
-    <%= f.label :travel_expenses %><br>
-    <%= f.check_box :travel_expenses %>
-  </div>
-  <div class="field">
-    <%= f.label :complete %><br>
-    <%= f.check_box :complete %>
-  </div>
-  <div class="field">
-    <%= f.label :invoice_id %><br>
-    <%= f.number_field :invoice_id %>
-  </div>
-  <div class="field">
-    <%= f.label :user_id %><br>
-    <%= f.number_field :user_id %>
-  </div>
-  <div class="actions">
-    <%= f.submit %>
-  </div>
+  <table class="table">
+    <tr>
+      <th><%= f.label :work_on %></th>
+      <td><%= f.text_field :work_on, class: "pick_datetime_15" %></td>
+    </tr>
+    <tr>
+      <th><%= f.label :content %></th>
+      <td><%= f.text_field :content, class: "col-md-7" %></td>
+    </tr>
+    <tr>
+      <th><%= f.label :city %></th>
+      <td><%= f.text_field :city %></td>
+    </tr>
+    <tr>
+      <th><%= f.label :custom_id %></th>
+      <td><%= f.number_field :custom_id %></td>
+    </tr>
+    <tr>
+      <th><%= f.label :travel_expenses %></th>
+      <td><%= f.check_box :travel_expenses %></td>
+    </tr>
+    <tr>
+      <th><%= f.label :complete %></th>
+      <td><%= f.check_box :complete %></td>
+    </tr>
+    <tr>
+      <th><%= f.label :invoice_id %></th>
+      <td><%= f.number_field :invoice_id %></td>
+    </tr>
+    <tr>
+      <th><%= f.label :user_id %></th>
+      <td><%= f.number_field :user_id %></td>
+    </tr>
+    <tr>
+      <th><%= f.submit %></th>
+      <td>&nbsp;</td>
+    </tr>
+  </table>
 <% end %>

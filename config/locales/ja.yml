@@ -222,7 +222,7 @@ ja:
       journal:
         work_on: 日付
         content: 内容
-        city: 都市
+        city: 場所
         custom_id: 取引先
         travel_expenses: 交通費あり
         complete: 完了

@@ -1,19 +1,12 @@
-<h1>Listing journals</h1>
+<h2>日誌 <%= today.strftime("%Y年%m月") %></h2>
 
-<table>
+<table class="table table-condensed">
   <thead>
     <tr>
-      <th>Work on</th>
-      <th>Content</th>
-      <th>City</th>
-      <th>Custom</th>
-      <th>Travel expenses</th>
-      <th>Complete</th>
-      <th>Invoice</th>
-      <th>User</th>
-      <th></th>
-      <th></th>
-      <th></th>
+      <th>&nbsp;</th>
+      <th>場所</th>
+      <th>取引先</th>
+      <th>内容</th>
     </tr>
   </thead>
 
@@ -21,21 +14,10 @@
     <% @journals.each do |journal| %>
       <tr>
         <td><%= journal.work_on %></td>
-        <td><%= journal.content %></td>
         <td><%= journal.city %></td>
         <td><%= journal.custom_id %></td>
-        <td><%= journal.travel_expenses %></td>
-        <td><%= journal.complete %></td>
-        <td><%= journal.invoice_id %></td>
-        <td><%= journal.user_id %></td>
-        <td><%= link_to 'Show', journal %></td>
-        <td><%= link_to 'Edit', edit_journal_path(journal) %></td>
-        <td><%= link_to 'Destroy', journal, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        <td><%= journal.content %></td>
       </tr>
     <% end %>
   </tbody>
 </table>
-
-<br>
-
-<%= link_to 'New Journal', new_journal_path %>
