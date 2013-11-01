@@ -1,39 +1,36 @@
-<h1>Listing companies</h1>
+<h3>自社情報</h3>
 
-<table>
-  <thead>
-    <tr>
-      <th>Name</th>
-      <th>Address</th>
-      <th>Tel</th>
-      <th>Fax</th>
-      <th>President</th>
-      <th>Zip</th>
-      <th>Email</th>
-      <th></th>
-      <th></th>
-      <th></th>
-    </tr>
-  </thead>
+<% @companies.each do |company| %>
 
-  <tbody>
-    <% @companies.each do |company| %>
+  <div class="panel panel-default bottom-no-margin">
+    <div class="panel-heading"><strong><%= company.name %></strong></div>
+    <table class="table table-bordered">
       <tr>
-        <td><%= company.name %></td>
-        <td><%= company.address %></td>
-        <td><%= company.tel %></td>
-        <td><%= company.fax %></td>
-        <td><%= company.president %></td>
+        <td>郵便番号</td>
         <td><%= company.zip %></td>
-        <td><%= company.email %></td>
-        <td><%= link_to 'Show', company %></td>
-        <td><%= link_to 'Edit', edit_company_path(company) %></td>
-        <td><%= link_to 'Destroy', company, method: :delete, data: { confirm: 'Are you sure?' } %></td>
       </tr>
-    <% end %>
-  </tbody>
-</table>
+      <tr>
+        <td>住所</td>
+        <td><%= company.address %></td>
+      </tr>
+      <tr>
+        <td>TEL</td>
+        <td><%= company.tel %></td>
+      </tr>
+      <tr>
+        <td>FAX</td>
+        <td><%= company.fax %></td>
+      </tr>
+      <tr>
+        <td>代表者名</td>
+        <td><%= company.president %></td>
+      </tr>
+      <tr>
+        <td>メールアドレス</td>
+        <td><%= company.email %></td>
+      </tr>
+    </table>
+  </div>
+  <%= link_to '編集', edit_company_path(company), class: "btn btn-danger btn-sm" %>
 
-<br>
-
-<%= link_to 'New Company', new_company_path %>
+<% end %>
