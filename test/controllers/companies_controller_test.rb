@@ -21,12 +21,7 @@ class CompaniesControllerTest < ActionController::TestCase
       post :create, company: { address: @company.address, email: @company.email, fax: @company.fax, name: @company.name, president: @company.president, tel: @company.tel, zip: @company.zip }
     end
 
-    assert_redirected_to company_path(assigns(:company))
-  end
-
-  test "should show company" do
-    get :show, id: @company
-    assert_response :success
+    assert_redirected_to companies_path
   end
 
   test "should get edit" do
@@ -36,7 +31,7 @@ class CompaniesControllerTest < ActionController::TestCase
 
   test "should update company" do
     patch :update, id: @company, company: { address: @company.address, email: @company.email, fax: @company.fax, name: @company.name, president: @company.president, tel: @company.tel, zip: @company.zip }
-    assert_redirected_to company_path(assigns(:company))
+    assert_redirected_to companies_path
   end
 
   test "should destroy company" do
