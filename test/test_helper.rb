@@ -13,3 +13,11 @@ class ActiveSupport::TestCase
 
   # Add more helper methods to be used by all tests here...
 end
+
+class ActionController::TestCase
+  include Devise::TestHelpers
+  setup do
+    @user = users(:kuma)
+    sign_in @user
+  end
+end
