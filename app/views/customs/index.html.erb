@@ -1,39 +1,38 @@
-<h1>Listing customs</h1>
+<h3>取引先情報<%= link_to '新規追加', new_custom_path, class: "btn btn-danger btn-sm pull-right" %></h3>
 
-<table>
-  <thead>
-    <tr>
-      <th>Name</th>
-      <th>Address</th>
-      <th>Tel</th>
-      <th>Fax</th>
-      <th>President</th>
-      <th>Zip</th>
-      <th>Email</th>
-      <th></th>
-      <th></th>
-      <th></th>
-    </tr>
-  </thead>
+<% @customs.each do |custom| %>
 
-  <tbody>
-    <% @customs.each do |custom| %>
+  <div class="panel panel-default bottom-no-margin">
+    <div class="panel-heading"><strong><%= custom.name %></strong></div>
+    <table class="table table-bordered">
       <tr>
-        <td><%= custom.name %></td>
-        <td><%= custom.address %></td>
-        <td><%= custom.tel %></td>
-        <td><%= custom.fax %></td>
-        <td><%= custom.president %></td>
+        <td class="col-md-4">郵便番号</td>
         <td><%= custom.zip %></td>
-        <td><%= custom.email %></td>
-        <td><%= link_to 'Show', custom %></td>
-        <td><%= link_to 'Edit', edit_custom_path(custom) %></td>
-        <td><%= link_to 'Destroy', custom, method: :delete, data: { confirm: 'Are you sure?' } %></td>
       </tr>
-    <% end %>
-  </tbody>
-</table>
+      <tr>
+        <td>住所</td>
+        <td><%= custom.address %></td>
+      </tr>
+      <tr>
+        <td>TEL</td>
+        <td><%= custom.tel %></td>
+      </tr>
+      <tr>
+        <td>FAX</td>
+        <td><%= custom.fax %></td>
+      </tr>
+      <tr>
+        <td>代表者名</td>
+        <td><%= custom.president %></td>
+      </tr>
+      <tr>
+        <td>メールアドレス</td>
+        <td><%= custom.email %></td>
+      </tr>
+    </table>
+  </div>
+  <%= link_to '編集', edit_custom_path(custom), class: "btn btn-danger btn-sm" %>
 
-<br>
+  <div>&nbsp;</div>
 
-<%= link_to 'New Custom', new_custom_path %>
+<% end %>
