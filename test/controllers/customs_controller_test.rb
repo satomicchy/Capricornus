@@ -21,7 +21,7 @@ class CustomsControllerTest < ActionController::TestCase
       post :create, custom: { address: @custom.address, email: @custom.email, fax: @custom.fax, name: @custom.name, president: @custom.president, tel: @custom.tel, zip: @custom.zip }
     end
 
-    assert_redirected_to custom_path(assigns(:custom))
+    assert_redirected_to customs_path
   end
 
   test "should show custom" do
@@ -36,7 +36,7 @@ class CustomsControllerTest < ActionController::TestCase
 
   test "should update custom" do
     patch :update, id: @custom, custom: { address: @custom.address, email: @custom.email, fax: @custom.fax, name: @custom.name, president: @custom.president, tel: @custom.tel, zip: @custom.zip }
-    assert_redirected_to custom_path(assigns(:custom))
+    assert_redirected_to customs_path
   end
 
   test "should destroy custom" do
