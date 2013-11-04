@@ -12,6 +12,10 @@
   <script src="../../assets/js/respond.min.js"></script>
   <![endif]-->
 
+  <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
+  <script src="//code.jquery.com/jquery.js"></script>
+  <%= javascript_include_tag "application", "data-turbolinks-track" => true %>
+
   <%= stylesheet_link_tag    "application", media: "all", "data-turbolinks-track" => true %>
   <%= csrf_meta_tags %>
 </head>
@@ -66,8 +70,5 @@
     </div>
   </div>
 
-  <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
-  <script src="//code.jquery.com/jquery.js"></script>
-  <%= javascript_include_tag "application", "data-turbolinks-track" => true %>
 </body>
 </html>
