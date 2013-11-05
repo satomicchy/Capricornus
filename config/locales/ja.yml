@@ -205,7 +205,10 @@ ja:
         email: メールアドレス
         close_day: 締日
       user:
+        name: 氏名
         email: メールアドレス
+        password: パスワード
+        password_confirmation: パスワード(確認)
       custom:
         name: 会社名
         address: 住所
