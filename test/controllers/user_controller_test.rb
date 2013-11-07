@@ -20,4 +20,9 @@ class UsersControllerTest < ActionController::TestCase
 
     assert_redirected_to users_path
   end
+
+  test "should get edit" do
+    get :edit, id: @user
+    assert_response :success
+  end
 end
