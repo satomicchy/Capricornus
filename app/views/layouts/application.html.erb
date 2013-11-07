@@ -52,7 +52,7 @@
             <li><%= link_to '取引先設定', customs_path %></li>
           </ul>
         </li>
-        <li><a href="#">Logout</a></li>
+        <li><%= link_to 'Logout', destroy_user_session_path %></li>
       </ul>
     </div>
   </nav>
@@ -61,7 +61,11 @@
     <div class="row">
       <div class="col-md-12">
         <%= yield %>
+      </div>
+    </div>
 
+    <div class="row">
+      <div class="col-md-12">
         <footer>
           <br />
           produced by <a href="https://github.com/satomicchy/Capricornus">satomicchy</a>
