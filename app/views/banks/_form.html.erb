@@ -11,23 +11,25 @@
     </div>
   <% end %>
 
-  <div class="field">
+  <div class="well">
+  <div class="form-group col-md-6">
     <%= f.label :name %><br>
-    <%= f.text_field :name %>
+    <%= f.text_field :name, class: "form-control" %>
   </div>
-  <div class="field">
+  <div class="form-group col-md-6">
     <%= f.label :branch %><br>
-    <%= f.text_field :branch %>
+    <%= f.text_field :branch, class: "form-control" %>
   </div>
-  <div class="field">
+  <div class="form-group col-md-6">
     <%= f.label :type %><br>
-    <%= f.text_field :type %>
+    <%= f.select :type, Bank::TYPE.map{|b| [t(b), b]} ,class: "form-control" %>
   </div>
-  <div class="field">
+  <div class="form-group col-md-6">
     <%= f.label :number %><br>
-    <%= f.number_field :number %>
+    <%= f.number_field :number, class: "form-control" %>
   </div>
   <div class="actions">
-    <%= f.submit %>
+    <%= f.submit class: "btn btn-primary btn-sm" %>
+  </div>
   </div>
 <% end %>
