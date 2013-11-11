@@ -11,13 +11,13 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20131101105312) do
+ActiveRecord::Schema.define(version: 20131111100815) do
 
   create_table "banks", force: true do |t|
     t.string   "name"
     t.string   "branch"
     t.string   "type"
-    t.integer  "number"
+    t.string   "number"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
