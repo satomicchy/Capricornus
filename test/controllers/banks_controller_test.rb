@@ -21,12 +21,7 @@ class BanksControllerTest < ActionController::TestCase
       post :create, bank: { branch: @bank.branch, name: @bank.name, number: @bank.number, type: @bank.type }
     end
 
-    assert_redirected_to bank_path(assigns(:bank))
-  end
-
-  test "should show bank" do
-    get :show, id: @bank
-    assert_response :success
+    assert_redirected_to banks_path
   end
 
   test "should get edit" do
@@ -36,7 +31,7 @@ class BanksControllerTest < ActionController::TestCase
 
   test "should update bank" do
     patch :update, id: @bank, bank: { branch: @bank.branch, name: @bank.name, number: @bank.number, type: @bank.type }
-    assert_redirected_to bank_path(assigns(:bank))
+    assert_redirected_to banks_path
   end
 
   test "should destroy bank" do
