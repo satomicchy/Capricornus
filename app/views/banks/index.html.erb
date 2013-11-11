@@ -1,33 +1,26 @@
-<h1>Listing banks</h1>
+<h3>銀行情報<%= link_to '新規追加', new_bank_path, class: "btn btn-danger btn-sm pull-right" %></h3>
 
-<table>
-  <thead>
-    <tr>
-      <th>Name</th>
-      <th>Branch</th>
-      <th>Type</th>
-      <th>Number</th>
-      <th></th>
-      <th></th>
-      <th></th>
-    </tr>
-  </thead>
+<% @banks.each do |bank| %>
 
-  <tbody>
-    <% @banks.each do |bank| %>
+  <div class="panel panel-default bottom-no-margin">
+    <div class="panel-heading"><strong><%= bank.name %></strong></div>
+    <table class="table table-bordered">
       <tr>
-        <td><%= bank.name %></td>
+        <td class="col-md-4">支店名</td>
         <td><%= bank.branch %></td>
-        <td><%= bank.type %></td>
-        <td><%= bank.number %></td>
-        <td><%= link_to 'Show', bank %></td>
-        <td><%= link_to 'Edit', edit_bank_path(bank) %></td>
-        <td><%= link_to 'Destroy', bank, method: :delete, data: { confirm: 'Are you sure?' } %></td>
       </tr>
-    <% end %>
-  </tbody>
-</table>
+      <tr>
+        <td>種類</td>
+        <td><%= t(bank.type) %></td>
+      </tr>
+      <tr>
+        <td>口座番号</td>
+        <td><%= bank.number %></td>
+      </tr>
+    </table>
+  </div>
+  <%= link_to '編集', edit_bank_path(bank), class: "btn btn-danger btn-sm" %>
 
-<br>
+  <div>&nbsp;</div>
 
-<%= link_to 'New Bank', new_bank_path %>
+<% end %>
