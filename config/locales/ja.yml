@@ -223,7 +223,8 @@ ja:
         type: 種類
         number: 口座番号
       journal:
-        work_on: 日付
+        start_at: 始業時刻
+        finish_at: 終業時刻
         content: 内容
         city: 場所
         custom_id: 取引先

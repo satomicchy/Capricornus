@@ -1,7 +1,7 @@
 # Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/Fixtures.html
 
 one:
-  work_on: 2013-10-16 17:06:36
+  start_at: 2013-10-16 17:06:36
   content: MyText
   city: MyString
   custom_id: 1
@@ -11,7 +11,7 @@ one:
   user_id: 1
 
 two:
-  work_on: 2013-10-16 17:06:36
+  start_at: 2013-10-16 17:06:36
   content: MyText
   city: MyString
   custom_id: 1

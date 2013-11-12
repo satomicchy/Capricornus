@@ -13,20 +13,24 @@
 
   <table class="table">
     <tr>
-      <th><%= f.label :work_on %></th>
-      <td><%= f.text_field :work_on, class: "pick_datetime_15" %></td>
+      <th><%= f.label :start_at %></th>
+      <td><%= f.text_field :start_at, class: "pick_datetime_15 form-control", size: "10" %></td>
+    </tr>
+    <tr>
+      <th><%= f.label :finish_at %></th>
+      <td><%= f.text_field :finish_at, class: "pick_datetime_15 form-control", size: "10" %></td>
     </tr>
     <tr>
       <th><%= f.label :content %></th>
-      <td><%= f.text_field :content, class: "col-md-7" %></td>
+      <td><%= f.text_field :content, class: "form-control" %></td>
     </tr>
     <tr>
       <th><%= f.label :city %></th>
-      <td><%= f.text_field :city %></td>
+      <td><%= f.text_field :city, class: "form-control" %></td>
     </tr>
     <tr>
       <th><%= f.label :custom_id %></th>
-      <td><%= f.number_field :custom_id %></td>
+      <td><%= f.select :custom_id, Custom.all.map{|c| [c.name, c.id]} %></td>
     </tr>
     <tr>
       <th><%= f.label :travel_expenses %></th>
@@ -36,17 +40,16 @@
       <th><%= f.label :complete %></th>
       <td><%= f.check_box :complete %></td>
     </tr>
+    <% if request.path_parameters[:action] == "edit"%>
+      <tr>
+        <th><%= f.label :invoice_id %></th>
+        <td><%= f.number_field :invoice_id, class: "form-control" %></td>
+      </tr>
+    <% end %>
     <tr>
-      <th><%= f.label :invoice_id %></th>
-      <td><%= f.number_field :invoice_id %></td>
-    </tr>
-    <tr>
-      <th><%= f.label :user_id %></th>
-      <td><%= f.number_field :user_id %></td>
-    </tr>
-    <tr>
-      <th><%= f.submit %></th>
+      <th><%= f.submit class: "btn btn-primary btn-sm" %></th>
       <td>&nbsp;</td>
     </tr>
   </table>
+  <%= f.hidden_field :user_id, value: current_user.id %>
 <% end %>
