@@ -4,7 +4,7 @@ class JournalsController < ApplicationController
   # GET /journals
   # GET /journals.json
   def index
-    @journals = Journal.all
+    @journals = Journal.order("start_at")
   end
 
   # GET /journals/1

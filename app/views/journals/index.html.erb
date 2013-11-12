@@ -1,22 +1,26 @@
-<h2>日誌 <%= today.strftime("%Y年%m月") %></h2>
+<h2><%= today.strftime("%Y年%m月") %></h2>
 
 <table class="table table-condensed">
   <thead>
     <tr>
-      <th>&nbsp;</th>
+      <th>日時</th>
       <th>場所</th>
       <th>取引先</th>
       <th>内容</th>
+      <th>&nbsp;</th>
+      <th>&nbsp;</th>
     </tr>
   </thead>
 
   <tbody>
     <% @journals.each do |journal| %>
       <tr>
-        <td><%= journal.start_at %></td>
+        <td><%= journal.start_at.try(:strftime, "%Y-%m-%d %H:%M") %>〜</td>
         <td><%= journal.city %></td>
-        <td><%= journal.custom_id %></td>
+        <td><%= journal.custom.try(:name) %></td>
         <td><%= journal.content %></td>
+        <td><%= link_to '詳細', journal_path(journal), class: "btn btn-primary btn-sm" %></td>
+        <td><%= link_to '編集', edit_journal_path(journal), class: "btn btn-danger btn-sm" %></td>
       </tr>
     <% end %>
   </tbody>
