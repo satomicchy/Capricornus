@@ -1,44 +1,49 @@
+<h3>日誌詳細</h3>
+<%= link_to '戻る', journals_path %>
+
 <p id="notice"><%= notice %></p>
 
-<p>
-  <strong>Work on:</strong>
-  <%= @journal.start_at %>
-</p>
+<div class="panel panel-default bottom-no-margin">
+  <div class="panel-heading"><strong><%= @journal.start_at.try(:strftime, "%Y-%m-%d") %></strong></div>
+  <table class="table table-bordered">
+    <tr>
+      <th>始業時刻</th>
+      <td><%= @journal.start_at.try(:strftime, "%Y-%m-%d %H:%M") %></td>
+    </tr>
+    <tr>
+      <th>終業時刻</th>
+      <td><%= @journal.finish_at.try(:strftime, "%Y-%m-%d %H:%M") %></td>
+    </tr>
+    <tr>
+      <th>内容</th>
+      <td><%= @journal.content %></td>
+    </tr>
+    <tr>
+      <th>場所</th>
+      <td><%= @journal.city %></td>
+    </tr>
+    <tr>
+      <th>取引先</th>
+      <td><%= @journal.custom.try(:name) %></td>
+    </tr>
+    <tr>
+      <th>交通費あり</th>
+      <td><%= @journal.travel_expenses %></td>
+    </tr>
+    <tr>
+      <th>完了</th>
+      <td><%= @journal.complete %></td>
+    </tr>
+    <tr>
+      <th>請求書</th>
+      <td><%= @journal.invoice_id %></td>
+    </tr>
+    <tr>
+      <th>実施者</th>
+      <td><%= @journal.user.try(:name) %></td>
+    </tr>
+  </table>
+</div>
+<%= link_to '編集', edit_journal_path(@journal), class: "btn btn-danger btn-sm" %>
 
-<p>
-  <strong>Content:</strong>
-  <%= @journal.content %>
-</p>
-
-<p>
-  <strong>City:</strong>
-  <%= @journal.city %>
-</p>
-
-<p>
-  <strong>Custom:</strong>
-  <%= @journal.custom_id %>
-</p>
-
-<p>
-  <strong>Travel expenses:</strong>
-  <%= @journal.travel_expenses %>
-</p>
-
-<p>
-  <strong>Complete:</strong>
-  <%= @journal.complete %>
-</p>
-
-<p>
-  <strong>Invoice:</strong>
-  <%= @journal.invoice_id %>
-</p>
-
-<p>
-  <strong>User:</strong>
-  <%= @journal.user_id %>
-</p>
-
-<%= link_to 'Edit', edit_journal_path(@journal) %> |
-<%= link_to 'Back', journals_path %>
+<div>&nbsp;</div>
