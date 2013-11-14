@@ -4,7 +4,8 @@ class JournalsController < ApplicationController
   # GET /journals
   # GET /journals.json
   def index
-    @journals = Journal.order("start_at")
+    date = params[:month] ? Date.new(params[:year].to_i, params[:month].to_i, 1) : Date.today
+    @journals = Journal.current_month(date).order("start_at")
   end
 
   # GET /journals/1
