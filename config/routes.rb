@@ -6,7 +6,9 @@ Capricornus::Application.routes.draw do
 
   resources :costs
 
-  resources :journals
+  resources :journals, except: [:index] do
+    get ':year/:month', to: :index, on: :collection, as: 'monthly'
+  end
 
   resources :banks
 

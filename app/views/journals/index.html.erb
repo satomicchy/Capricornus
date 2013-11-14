@@ -1,4 +1,6 @@
-<h2><%= today.strftime("%Y年%m月") %></h2>
+<h2>
+  <%= link_to '前月', monthly_journals_path(prev_month.year, prev_month.month), class: "btn btn-default btn-xs" %>&nbsp;<%= params[:year] || Date.today.year %>年<%= params[:month]  || Date.today.month %>月&nbsp;<%= link_to '次月', monthly_journals_path(next_month.year, next_month.month), class: "btn btn-default btn-xs" %>
+</h2>
 
 <table class="table table-condensed">
   <thead>
