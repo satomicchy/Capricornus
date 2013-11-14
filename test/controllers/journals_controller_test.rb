@@ -2,7 +2,7 @@ require 'test_helper'
 
 class JournalsControllerTest < ActionController::TestCase
   setup do
-    @journal = journals(:one)
+    @journal = journals(:today)
   end
 
   test "should get index" do
