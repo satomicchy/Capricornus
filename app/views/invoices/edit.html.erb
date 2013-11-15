@@ -1,6 +1,6 @@
-<h1>Editing invoice</h1>
+<h3>請求書編集</h3>
 
 <%= render 'form' %>
 
-<%= link_to 'Show', @invoice %> |
-<%= link_to 'Back', invoices_path %>
+<%= link_to '詳細', @invoice %> |
+<%= link_to 'キャンセル', invoices_path(ongoing: true) %>

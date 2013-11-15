@@ -11,31 +11,30 @@
     </div>
   <% end %>
 
-  <div class="field">
-    <%= f.label :number %><br>
-    <%= f.text_field :number %>
-  </div>
-  <div class="field">
-    <%= f.label :ask_on %><br>
-    <%= f.date_select :ask_on %>
-  </div>
-  <div class="field">
-    <%= f.label :deadline %><br>
-    <%= f.date_select :deadline %>
-  </div>
-  <div class="field">
-    <%= f.label :custom_id %><br>
-    <%= f.number_field :custom_id %>
-  </div>
-  <div class="field">
-    <%= f.label :memo %><br>
-    <%= f.text_area :memo %>
-  </div>
-  <div class="field">
-    <%= f.label :summary %><br>
-    <%= f.number_field :summary %>
-  </div>
-  <div class="actions">
-    <%= f.submit %>
-  </div>
+  <table class="table">
+    <tr>
+      <th><%= f.label :ask_on %></th>
+      <td><%= f.text_field :ask_on, class: "pick_date form-control", size: "10" %></td>
+    </tr>
+    <tr>
+      <th><%= f.label :deadline %></th>
+      <td><%= f.text_field :deadline, class: "pick_date form-control", size: "10" %></td>
+    </tr>
+    <tr>
+      <th><%= f.label :custom_id %></th>
+      <td><%= f.select :custom_id, Custom.all.map{|c| [c.name, c.id]} %></td>
+    </tr>
+    <tr>
+      <th><%= f.label :memo %></th>
+      <td><%= f.text_area :memo, class: "form-control" %></td>
+    </tr>
+    <tr>
+      <th><%= f.label :summary %></th>
+      <td><%= f.number_field :summary, class: "form-control" %></td>
+    </tr>
+    <tr>
+      <th><%= f.submit class: "btn btn-primary btn-sm" %></th>
+      <td>&nbsp;</td>
+    </tr>
+  </table>
 <% end %>

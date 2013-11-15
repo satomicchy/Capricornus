@@ -1,3 +1,6 @@
-# Place all the behaviors and hooks related to the matching controller here.
-# All this logic will automatically be available in application.js.
-# You can use CoffeeScript in this file: http://coffeescript.org/
+jQuery ($) ->
+  $('.pick_date').datetimepicker
+    format: 'yyyy-mm-dd',
+    autoclose: true,
+    minView: 3,
+    language: 'ja'
