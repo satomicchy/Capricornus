@@ -1,17 +1,22 @@
-<h1>Listing invoices</h1>
+<h2>請求書&nbsp;
+  <% if params[:ongoing] == "true" %>
+    <%= link_to '請求中・予定', invoices_path(ongoing: true), class: "btn btn-primary disabled", id: "invoices_ongoing" %>
+    <%= link_to 'すべて', invoices_path, class: "btn btn-default", id: "invoices_all" %>
+  <% else %>
+    <%= link_to '請求中・予定', invoices_path(ongoing: true), class: "btn btn-default", id: "invoices_ongoing" %>
+    <%= link_to 'すべて', invoices_path, class: "btn btn-primary disabled", id: "invoices_all" %>
+  <% end %>
+</h2>
 
-<table>
+<table class="table table-condensed">
   <thead>
     <tr>
-      <th>Number</th>
-      <th>Ask on</th>
-      <th>Deadline</th>
-      <th>Custom</th>
-      <th>Memo</th>
-      <th>Summary</th>
-      <th></th>
-      <th></th>
-      <th></th>
+      <th>番号</th>
+      <th>取引先</th>
+      <th>請求日</th>
+      <th>期限</th>
+      <th>&nbsp;</th>
+      <th>&nbsp;</th>
     </tr>
   </thead>
 
@@ -19,14 +24,11 @@
     <% @invoices.each do |invoice| %>
       <tr>
         <td><%= invoice.number %></td>
+        <td><%= invoice.custom.try(:name) %></td>
         <td><%= invoice.ask_on %></td>
         <td><%= invoice.deadline %></td>
-        <td><%= invoice.custom_id %></td>
-        <td><%= invoice.memo %></td>
-        <td><%= invoice.summary %></td>
-        <td><%= link_to 'Show', invoice %></td>
-        <td><%= link_to 'Edit', edit_invoice_path(invoice) %></td>
-        <td><%= link_to 'Destroy', invoice, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        <td><%= link_to '詳細', invoice, class: "btn btn-primary btn-sm" %></td>
+        <td><%= link_to '編集', edit_invoice_path(invoice), class: "btn btn-danger btn-sm" %></td>
       </tr>
     <% end %>
   </tbody>
@@ -34,4 +36,4 @@
 
 <br>
 
-<%= link_to 'New Invoice', new_invoice_path %>
+<%= link_to '新規作成', new_invoice_path, class: "btn btn-danger btn-sm" %>

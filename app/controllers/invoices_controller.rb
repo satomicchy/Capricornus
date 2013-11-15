@@ -4,7 +4,11 @@ class InvoicesController < ApplicationController
   # GET /invoices
   # GET /invoices.json
   def index
-    @invoices = Invoice.all
+    @invoices = if params[:ongoing] == "true"
+                  Invoice.where("payment IS NOT ?", true).where("cancel IS NOT ?", true)
+                else
+                  Invoice.all
+                end
   end
 
   # GET /invoices/1
