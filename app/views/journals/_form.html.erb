@@ -33,10 +33,6 @@
       <td><%= f.select :custom_id, Custom.all.map{|c| [c.name, c.id]} %></td>
     </tr>
     <tr>
-      <th><%= f.label :travel_expenses %></th>
-      <td><%= f.check_box :travel_expenses %></td>
-    </tr>
-    <tr>
       <th><%= f.label :complete %></th>
       <td><%= f.check_box :complete %></td>
     </tr>

@@ -6,7 +6,6 @@ today:
   content: もぐもぐ
   city: 大阪市
   custom_id: 1
-  travel_expenses: false
   complete: false
   invoice_id: 1
   user: kuma
@@ -17,7 +16,6 @@ last_month:
   content: もくもく
   city: 京都市
   custom_id: 1
-  travel_expenses: false
   complete: false
   invoice_id: 1
   user_id: kuma
