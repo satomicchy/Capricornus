@@ -44,6 +44,6 @@ class JournalsControllerTest < ActionController::TestCase
       delete :destroy, id: @journal
     end
 
-    assert_redirected_to journals_path
+    assert_redirected_to root_path
   end
 end
