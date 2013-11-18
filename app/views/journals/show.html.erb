@@ -3,7 +3,11 @@
 <p id="notice"><%= notice %></p>
 
 <div class="panel panel-default bottom-no-margin">
-  <div class="panel-heading"><strong><%= @journal.start_at.try(:strftime, "%Y-%m-%d") %></strong></div>
+  <div class="panel-heading">
+    <strong><%= @journal.start_at.try(:strftime, "%Y-%m-%d") %></strong>
+    &nbsp;&nbsp;
+    <%= link_to '編集', edit_journal_path(@journal), class: "btn btn-danger btn-xs" %>
+  </div>
   <table class="table table-bordered">
     <tr>
       <th>始業時刻</th>
@@ -39,6 +43,5 @@
     </tr>
   </table>
 </div>
-<%= link_to '編集', edit_journal_path(@journal), class: "btn btn-danger btn-sm" %>
 
 <div>&nbsp;</div>

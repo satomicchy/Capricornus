@@ -3,7 +3,11 @@
 <% @customs.each do |custom| %>
 
   <div class="panel panel-default bottom-no-margin">
-    <div class="panel-heading"><strong><%= custom.name %></strong></div>
+    <div class="panel-heading">
+      <strong><%= custom.name %></strong>
+      &nbsp;&nbsp;
+      <%= link_to '編集', edit_custom_path(custom), class: "btn btn-danger btn-xs" %>
+    </div>
     <table class="table table-bordered">
       <tr>
         <td class="col-md-4">郵便番号</td>
@@ -31,7 +35,6 @@
       </tr>
     </table>
   </div>
-  <%= link_to '編集', edit_custom_path(custom), class: "btn btn-danger btn-sm" %>
 
   <div>&nbsp;</div>
 

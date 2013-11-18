@@ -3,7 +3,11 @@
 <% @banks.each do |bank| %>
 
   <div class="panel panel-default bottom-no-margin">
-    <div class="panel-heading"><strong><%= bank.name %></strong></div>
+    <div class="panel-heading">
+      <strong><%= bank.name %></strong>
+      &nbsp;&nbsp;
+      <%= link_to '編集', edit_bank_path(bank), class: "btn btn-danger btn-xs" %>
+    </div>
     <table class="table table-bordered">
       <tr>
         <td class="col-md-4">支店名</td>
@@ -19,7 +23,6 @@
       </tr>
     </table>
   </div>
-  <%= link_to '編集', edit_bank_path(bank), class: "btn btn-danger btn-sm" %>
 
   <div>&nbsp;</div>
 

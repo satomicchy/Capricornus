@@ -3,7 +3,11 @@
 <% @companies.each do |company| %>
 
   <div class="panel panel-default bottom-no-margin">
-    <div class="panel-heading"><strong><%= company.name %></strong></div>
+    <div class="panel-heading">
+      <strong><%= company.name %></strong>
+      &nbsp;&nbsp;
+      <%= link_to '編集', edit_company_path(company), class: "btn btn-danger btn-xs" %>
+    </div>
     <table class="table table-bordered">
       <tr>
         <td>郵便番号</td>
@@ -31,6 +35,5 @@
       </tr>
     </table>
   </div>
-  <%= link_to '編集', edit_company_path(company), class: "btn btn-danger btn-sm" %>
 
 <% end %>
