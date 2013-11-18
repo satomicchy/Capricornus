@@ -4,10 +4,9 @@ Capricornus::Application.routes.draw do
 
   resources :invoices
 
-  resources :costs
-
   resources :journals, except: [:index] do
     get ':year/:month', to: :index, on: :collection, as: 'monthly', constraints: {year: /\d+/, month: /\d+/}
+    resources :costs
   end
 
   resources :banks

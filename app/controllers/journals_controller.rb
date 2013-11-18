@@ -11,6 +11,7 @@ class JournalsController < ApplicationController
   # GET /journals/1
   # GET /journals/1.json
   def show
+    @costs = @journal.costs
   end
 
   # GET /journals/new

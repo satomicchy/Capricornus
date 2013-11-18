@@ -2,7 +2,7 @@
 
 <p id="notice"><%= notice %></p>
 
-<div class="panel panel-default bottom-no-margin">
+<div class="panel panel-default">
   <div class="panel-heading">
     <strong><%= @journal.start_at.try(:strftime, "%Y-%m-%d") %></strong>
     &nbsp;&nbsp;
@@ -43,5 +43,25 @@
     </tr>
   </table>
 </div>
+
+<table class="table table-bordered bottom-no-margin">
+  <tr class="active">
+    <th>単位</th>
+    <th>数量</th>
+    <th>単価</th>
+    <th>金額</th>
+    <th>&nbsp;</th>
+  </tr>
+  <% @costs.each do |cost| %>
+  <tr>
+    <td><%= cost.unit %></td>
+    <td><%= cost.count %></td>
+    <td><%= cost.unit_price %></td>
+    <td><%= cost.unit * cost.unit_price %></td>
+    <td><%= link_to '編集', edit_journal_cost_path(@journal, cost), class: "btn btn-danger btn-ms" %></td>
+  </tr>
+  <% end %>
+</table>
+<%= link_to '請求追加', new_journal_cost_path(@journal), class: "btn btn-danger btn-sm pull-right" %>
 
 <div>&nbsp;</div>
