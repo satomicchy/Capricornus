@@ -14,7 +14,9 @@ class CostsController < ApplicationController
 
   # GET /costs/new
   def new
-    @cost = Cost.new
+    @journal = Journal.find(params[:journal_id])
+    @cost    = @journal.costs.new
+    @costs   = @journal.costs
   end
 
   # GET /costs/1/edit

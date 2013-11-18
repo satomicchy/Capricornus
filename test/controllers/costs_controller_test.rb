@@ -12,7 +12,7 @@ class CostsControllerTest < ActionController::TestCase
   end
 
   test "should get new" do
-    get :new
+    get :new, journal_id: journals(:today)
     assert_response :success
   end
 

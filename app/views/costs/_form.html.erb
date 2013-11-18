@@ -1,4 +1,67 @@
-<%= form_for(@cost) do |f| %>
+<h3>日誌詳細</h3>
+
+<div class="panel panel-default">
+  <div class="panel-heading">
+    <strong><%= @journal.start_at.try(:strftime, "%Y-%m-%d") %></strong>
+  </div>
+  <table class="table table-bordered">
+    <tr>
+      <th>始業時刻</th>
+      <td><%= @journal.start_at.try(:strftime, "%Y-%m-%d %H:%M") %></td>
+    </tr>
+    <tr>
+      <th>終業時刻</th>
+      <td><%= @journal.finish_at.try(:strftime, "%Y-%m-%d %H:%M") %></td>
+    </tr>
+    <tr>
+      <th>内容</th>
+      <td><%= @journal.content %></td>
+    </tr>
+    <tr>
+      <th>場所</th>
+      <td><%= @journal.city %></td>
+    </tr>
+    <tr>
+      <th>取引先</th>
+      <td><%= @journal.custom.try(:name) %></td>
+    </tr>
+    <tr>
+      <th>完了</th>
+      <td><%= @journal.complete %></td>
+    </tr>
+    <tr>
+      <th>請求書</th>
+      <td><%= @journal.invoice_id %></td>
+    </tr>
+    <tr>
+      <th>実施者</th>
+      <td><%= @journal.user.try(:name) %></td>
+    </tr>
+  </table>
+</div>
+
+
+<table class="table table-bordered">
+  <tr class="active">
+    <th>単位</th>
+    <th>数量</th>
+    <th>単価</th>
+    <th>金額</th>
+    <th>&nbsp;</th>
+  </tr>
+  <% @costs.each do |cost| %>
+    <% next if cost.id == nil %>
+  <tr>
+    <td><%= cost.unit %></td>
+    <td><%= cost.count %></td>
+    <td><%= cost.unit_price %></td>
+    <td><%= (cost.unit || 0) * (cost.unit_price || 0) %></td>
+    <td>&nbsp;</td>
+  </tr>
+  <% end %>
+</table>
+
+<%= form_for([@journal, @cost]) do |f| %>
   <% if @cost.errors.any? %>
     <div id="error_explanation">
       <h2><%= pluralize(@cost.errors.count, "error") %> prohibited this cost from being saved:</h2>
@@ -11,23 +74,22 @@
     </div>
   <% end %>
 
-  <div class="field">
+  <div class="well well-sm">
+  <div class="form-group col-md-3">
     <%= f.label :count %><br>
-    <%= f.number_field :count %>
+    <%= f.number_field :count, class: "form-control" %>
   </div>
-  <div class="field">
+  <div class="form-group col-md-3">
     <%= f.label :unit %><br>
-    <%= f.text_field :unit %>
+    <%= f.text_field :unit, class: "form-control" %>
   </div>
-  <div class="field">
+  <div class="form-group col-md-3">
     <%= f.label :unit_price %><br>
-    <%= f.number_field :unit_price %>
+    <%= f.number_field :unit_price, class: "form-control" %>
   </div>
-  <div class="field">
-    <%= f.label :journal_id %><br>
-    <%= f.number_field :journal_id %>
+  <div class="form-group">
+    &nbsp;<br>
+    <%= f.submit class: "btn btn-primary btn-sm" %>
   </div>
-  <div class="actions">
-    <%= f.submit %>
   </div>
 <% end %>
