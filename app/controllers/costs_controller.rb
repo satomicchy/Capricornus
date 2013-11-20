@@ -1,16 +1,5 @@
 class CostsController < ApplicationController
-  before_action :set_cost, only: [:show, :edit, :update, :destroy]
-
-  # GET /costs
-  # GET /costs.json
-  def index
-    @costs = Cost.all
-  end
-
-  # GET /costs/1
-  # GET /costs/1.json
-  def show
-  end
+  before_action :set_cost, only: [:edit, :update, :destroy]
 
   # GET /costs/new
   def new

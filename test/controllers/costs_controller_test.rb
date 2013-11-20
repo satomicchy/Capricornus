@@ -5,12 +5,6 @@ class CostsControllerTest < ActionController::TestCase
     @cost = costs(:one)
   end
 
-  test "should get index" do
-    get :index
-    assert_response :success
-    assert_not_nil assigns(:costs)
-  end
-
   test "should get new" do
     get :new, journal_id: journals(:today)
     assert_response :success
@@ -23,11 +17,6 @@ class CostsControllerTest < ActionController::TestCase
     end
 
     assert_redirected_to journal_path(journal)
-  end
-
-  test "should show cost" do
-    get :show, id: @cost
-    assert_response :success
   end
 
   test "should get edit" do
