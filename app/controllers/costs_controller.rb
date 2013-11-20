@@ -50,9 +50,11 @@ class CostsController < ApplicationController
   # DELETE /costs/1
   # DELETE /costs/1.json
   def destroy
+    @journal = Journal.find(params[:journal_id])
+
     @cost.destroy
     respond_to do |format|
-      format.html { redirect_to costs_url }
+      format.html { redirect_to journal_path(@journal) }
       format.json { head :no_content }
     end
   end

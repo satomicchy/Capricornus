@@ -51,6 +51,7 @@
     <th>数量</th>
     <th>金額</th>
     <th>&nbsp;</th>
+    <th>&nbsp;</th>
   </tr>
   <% @costs.each do |cost| %>
   <tr>
@@ -58,6 +59,7 @@
     <td><%= number_to_currency cost.unit_price, :precision => 0, :unit => "円" %></td>
     <td><%= cost.count %></td>
     <td><%= number_to_currency (cost.count || 0) * (cost.unit_price || 0), :precision => 0, :unit => "円" %></td>
+    <td><%= link_to '削除', journal_cost_path(@journal, cost), method: :delete, data: { confirm: 'Are you sure?' }, class: "btn btn-info btn-xs" %></td>
     <td><%= link_to '編集', edit_journal_cost_path(@journal, cost), class: "btn btn-danger btn-xs" %></td>
   </tr>
   <% end %>
