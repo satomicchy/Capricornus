@@ -36,8 +36,9 @@ class CostsControllerTest < ActionController::TestCase
   end
 
   test "should update cost" do
-    patch :update, id: @cost, cost: { count: @cost.count, journal_id: @cost.journal_id, unit: @cost.unit, unit_price: @cost.unit_price }
-    assert_redirected_to cost_path(assigns(:cost))
+    journal = journals(:today)
+    patch :update, journal_id: journal.id, id: @cost, cost: { count: @cost.count, journal_id: @cost.journal_id, unit: @cost.unit, unit_price: @cost.unit_price }
+    assert_redirected_to journal_path(journal)
   end
 
   test "should destroy cost" do

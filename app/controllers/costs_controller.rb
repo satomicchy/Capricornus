@@ -45,9 +45,11 @@ class CostsController < ApplicationController
   # PATCH/PUT /costs/1
   # PATCH/PUT /costs/1.json
   def update
+    @journal = Journal.find(params[:journal_id])
+
     respond_to do |format|
       if @cost.update(cost_params)
-        format.html { redirect_to @cost, notice: 'Cost was successfully updated.' }
+        format.html { redirect_to journal_path(@journal), notice: 'Cost was successfully updated.' }
         format.json { head :no_content }
       else
         format.html { render action: 'edit' }
