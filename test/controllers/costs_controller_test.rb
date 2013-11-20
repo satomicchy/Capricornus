@@ -17,11 +17,12 @@ class CostsControllerTest < ActionController::TestCase
   end
 
   test "should create cost" do
+    journal = journals(:today)
     assert_difference('Cost.count') do
-      post :create, cost: { count: @cost.count, journal_id: @cost.journal_id, unit: @cost.unit, unit_price: @cost.unit_price }
+      post :create, journal_id: journal.id, cost: { count: @cost.count, journal_id: @cost.journal_id, unit: @cost.unit, unit_price: @cost.unit_price }
     end
 
-    assert_redirected_to cost_path(assigns(:cost))
+    assert_redirected_to journal_path(journal)
   end
 
   test "should show cost" do

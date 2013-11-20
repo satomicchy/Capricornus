@@ -44,18 +44,18 @@
 <table class="table table-bordered">
   <tr class="active">
     <th>単位</th>
-    <th>数量</th>
     <th>単価</th>
+    <th>数量</th>
     <th>金額</th>
     <th>&nbsp;</th>
   </tr>
   <% @costs.each do |cost| %>
     <% next if cost.id == nil %>
   <tr>
-    <td><%= cost.unit %></td>
+    <td><%= t(cost.unit) %></td>
+    <td><%= number_to_currency cost.unit_price, :precision => 0, :unit => "円" %></td>
     <td><%= cost.count %></td>
-    <td><%= cost.unit_price %></td>
-    <td><%= (cost.unit || 0) * (cost.unit_price || 0) %></td>
+    <td><%= number_to_currency (cost.count || 0) * (cost.unit_price || 0), :precision => 0, :unit => "円" %></td>
     <td>&nbsp;</td>
   </tr>
   <% end %>
@@ -76,16 +76,16 @@
 
   <div class="well well-sm">
   <div class="form-group col-md-3">
-    <%= f.label :count %><br>
-    <%= f.number_field :count, class: "form-control" %>
-  </div>
-  <div class="form-group col-md-3">
     <%= f.label :unit %><br>
-    <%= f.text_field :unit, class: "form-control" %>
+    <%= f.select :unit, Cost::UNIT_TYPE.map{|c| [t(c), c]}, class: "form-control" %>
   </div>
   <div class="form-group col-md-3">
     <%= f.label :unit_price %><br>
     <%= f.number_field :unit_price, class: "form-control" %>
+  </div>
+  <div class="form-group col-md-3">
+    <%= f.label :count %><br>
+    <%= f.number_field :count, class: "form-control" %>
   </div>
   <div class="form-group">
     &nbsp;<br>

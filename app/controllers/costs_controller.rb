@@ -26,11 +26,12 @@ class CostsController < ApplicationController
   # POST /costs
   # POST /costs.json
   def create
-    @cost = Cost.new(cost_params)
+    @journal = Journal.find(params[:journal_id])
+    @cost    = @journal.costs.new(cost_params)
 
     respond_to do |format|
       if @cost.save
-        format.html { redirect_to @cost, notice: 'Cost was successfully created.' }
+        format.html { redirect_to journal_path(@journal), notice: 'Cost was successfully created.' }
         format.json { render action: 'show', status: :created, location: @cost }
       else
         format.html { render action: 'new' }
