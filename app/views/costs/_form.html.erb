@@ -50,7 +50,7 @@
     <th>&nbsp;</th>
   </tr>
   <% @costs.each do |cost| %>
-    <% next if cost.id == nil %>
+    <% next if (cost.id == nil || cost.id.to_s == params[:id]) %>
   <tr>
     <td><%= t(cost.unit) %></td>
     <td><%= number_to_currency cost.unit_price, :precision => 0, :unit => "円" %></td>

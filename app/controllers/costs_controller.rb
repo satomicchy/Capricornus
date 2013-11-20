@@ -21,6 +21,8 @@ class CostsController < ApplicationController
 
   # GET /costs/1/edit
   def edit
+    @journal = Journal.find(params[:journal_id])
+    @costs   = @journal.costs
   end
 
   # POST /costs

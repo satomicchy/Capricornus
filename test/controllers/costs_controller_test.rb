@@ -31,7 +31,7 @@ class CostsControllerTest < ActionController::TestCase
   end
 
   test "should get edit" do
-    get :edit, id: @cost
+    get :edit, id: @cost, journal_id: journals(:today)
     assert_response :success
   end
 
