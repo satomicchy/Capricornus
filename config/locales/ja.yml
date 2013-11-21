@@ -239,7 +239,7 @@ ja:
         journal_id: 日誌
       invoice:
         number: 番号
-        ask_on: 依頼日
+        ask_on: 請求日
         deadline: 支払期限
         custom_id: 取引先
         memo: 備考

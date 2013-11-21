@@ -1,34 +1,73 @@
+<h3>請求書詳細</h3>
+
 <p id="notice"><%= notice %></p>
 
-<p>
-  <strong>Number:</strong>
-  <%= @invoice.number %>
-</p>
+<div class="panel panel-default">
+  <div class="panel-heading">
+    <strong><%= @invoice.custom.try(:name) %>様宛&nbsp;&nbsp;<%= @invoice.ask_on %>請求分</strong>
+    &nbsp;&nbsp;
+    <%= link_to '編集', edit_invoice_path(@invoice), class: "btn btn-danger btn-xs" %>
+  </div>
+  <table class="table table-bordered">
+    <tr>
+      <th>番号</th>
+      <td><%= @invoice.number %></td>
+    </tr>
+    <tr>
+      <th>取引先</th>
+      <td><%= @invoice.custom.try(:name) %></td>
+    </tr>
+    <tr>
+      <th>請求日</th>
+      <td><%= @invoice.ask_on %></td>
+    </tr>
+    <tr>
+      <th>支払期限</th>
+      <td><%= @invoice.deadline %></td>
+    </tr>
+    <tr>
+      <th>合計額</th>
+      <td><%= @invoice.summary %></td>
+    </tr>
+    <tr>
+      <th>支払済</th>
+      <td><%= @invoice.payment %></td>
+    </tr>
+    <tr>
+      <th>キャンセル</th>
+      <td><%= @invoice.cancel %></td>
+    </tr>
+    <tr>
+      <th>備考</th>
+      <td><%= @invoice.memo %></td>
+    </tr>
+  </table>
+</div>
 
-<p>
-  <strong>Ask on:</strong>
-  <%= @invoice.ask_on %>
-</p>
+<table class="table table-bordered bottom-no-margin">
+  <tr class="active">
+    <th>日付</th>
+    <th>内容</th>
+    <th>単位</th>
+    <th>単価</th>
+    <th>数量</th>
+    <th>金額</th>
+    <th>&nbsp;</th>
+  </tr>
+  <% @journals.each do |journal| %>
+    <% journal.costs.each do |cost| %>
+      <tr>
+        <td><%=journal.start_at.try(:strftime, "%Y-%m-%d") %></td>
+        <td><%=journal.content %></td>
+        <td><%= t(cost.unit) %></td>
+        <td><%= number_to_currency cost.unit_price, :precision => 0, :unit => "円" %></td>
+        <td><%= cost.count %></td>
+        <td><%= number_to_currency (cost.count || 0) * (cost.unit_price || 0), :precision => 0, :unit => "円" %></td>
+        <td><%= link_to '編集', edit_journal_cost_path(journal, cost), class: "btn btn-danger btn-xs" %></td>
+      </tr>
+    <% end %>
+  <% end %>
+</table>
+<%= link_to '項目編集', "javascript:void(0)", class: "btn btn-danger btn-sm pull-right" %>
 
-<p>
-  <strong>Deadline:</strong>
-  <%= @invoice.deadline %>
-</p>
-
-<p>
-  <strong>Custom:</strong>
-  <%= @invoice.custom_id %>
-</p>
-
-<p>
-  <strong>Memo:</strong>
-  <%= @invoice.memo %>
-</p>
-
-<p>
-  <strong>Summary:</strong>
-  <%= @invoice.summary %>
-</p>
-
-<%= link_to 'Edit', edit_invoice_path(@invoice) %> |
-<%= link_to 'Back', invoices_path %>
+<div>&nbsp;</div>
