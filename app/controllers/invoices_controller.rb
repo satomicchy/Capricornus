@@ -15,6 +15,7 @@ class InvoicesController < ApplicationController
   # GET /invoices/1.json
   def show
     @journals = @invoice.journals
+    @alone_journals = Journal.where("invoice_id IS NULL")
   end
 
   # GET /invoices/new
