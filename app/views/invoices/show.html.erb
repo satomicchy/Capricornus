@@ -9,7 +9,7 @@
   <div class="panel-heading">
     <strong><%= @invoice.custom.try(:name) %>様宛&nbsp;&nbsp;<%= @invoice.ask_on %>請求分</strong>
     &nbsp;&nbsp;
-    <%= link_to '編集', edit_invoice_path(@invoice), class: "btn btn-danger btn-xs" %>
+    <%= link_to '編集', edit_invoice_path(@invoice), class: "btn btn-danger btn-sm" %>
   </div>
   <table class="table table-bordered">
     <tr>
@@ -67,7 +67,7 @@
           <td><%= number_to_currency cost.unit_price, :precision => 0, :unit => "円" %></td>
           <td><%= cost.count %></td>
           <td><%= number_to_currency (cost.count || 0) * (cost.unit_price || 0), :precision => 0, :unit => "円" %></td>
-          <td><%= link_to '編集', edit_journal_cost_path(journal, cost), class: "btn btn-danger btn-xs" %></td>
+          <td><%= link_to '詳細', journal, class: "btn btn-primary btn-xs" %></td>
         </tr>
       <% end %>
     <% end %>
