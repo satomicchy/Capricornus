@@ -100,9 +100,7 @@
           </tr>
       <% end %>
     <% end %>
-  </table>
 
-  <table class="table table-bordered bottom-no-margin">
     <% @alone_journals.each do |journal| %>
       <% if journal.costs.present? %>
         <% journal.costs.each do |cost| %>
