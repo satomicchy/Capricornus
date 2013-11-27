@@ -2,7 +2,9 @@ Capricornus::Application.routes.draw do
   devise_for :users
   resources :estimates
 
-  resources :invoices
+  resources :invoices do
+    put ':invoice_id/journals', to: "journals#update_all", on: :collection, as: 'update_journals'
+  end
 
   resources :journals, except: [:index] do
     get ':year/:month', to: :index, on: :collection, as: 'monthly', constraints: {year: /\d+/, month: /\d+/}

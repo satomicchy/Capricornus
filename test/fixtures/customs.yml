@@ -1,11 +1,11 @@
 # Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/Fixtures.html
 
-one:
-  name: MyString
-  address: MyString
+fish_shop:
+  name: 魚屋
+  address: 北海道
   tel: MyString
   fax: MyString
-  president: MyString
+  president: キングサーモン
   zip: MyString
   email: MyString
 

@@ -46,4 +46,10 @@ class JournalsControllerTest < ActionController::TestCase
 
     assert_redirected_to root_path
   end
+
+  test "should update_all journal" do
+    @invoice = invoices(:october)
+    @journal = journals(:fishing)
+    patch :update_all, invoice_id: @invoice.id, alone_journal_ids: [@journal.id.to_s]
+  end
 end

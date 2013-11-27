@@ -53,6 +53,15 @@ class JournalsController < ApplicationController
     end
   end
 
+  def update_all
+    params[:alone_journal_ids].map{|s| s.to_i}.each do |journal_id|
+      journal = Journal.find(journal_id)
+      journal.update_attributes(invoice_id: params[:invoice_id].to_i)
+    end
+
+    redirect_to invoice_path(params[:invoice_id])
+  end
+
   # DELETE /journals/1
   # DELETE /journals/1.json
   def destroy

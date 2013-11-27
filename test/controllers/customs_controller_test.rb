@@ -2,7 +2,7 @@ require 'test_helper'
 
 class CustomsControllerTest < ActionController::TestCase
   setup do
-    @custom = customs(:one)
+    @custom = customs(:fish_shop)
   end
 
   test "should get index" do

@@ -2,7 +2,7 @@ require 'test_helper'
 
 class InvoicesControllerTest < ActionController::TestCase
   setup do
-    @invoice = invoices(:one)
+    @invoice = invoices(:october)
   end
 
   test "should get index" do

@@ -70,33 +70,40 @@
 </table>
 
 <div id="journal_add_area" style="display:none">
-<table class="table table-bordered bottom-no-margin">
-  <% @alone_journals.each do |journal| %>
-    <% if journal.costs.present? %>
-      <% journal.costs.each do |cost| %>
+
+<%= form_for(@invoice, method: :put, url: update_journals_invoices_path(@invoice)) do |f| %>
+  <table class="table table-bordered bottom-no-margin">
+    <% @alone_journals.each do |journal| %>
+      <% if journal.costs.present? %>
+        <% journal.costs.each do |cost| %>
+          <tr>
+            <td><%=journal.start_at.try(:strftime, "%Y-%m-%d") %></td>
+            <td><%=journal.content %></td>
+            <td><%= t(cost.unit) %></td>
+            <td><%= number_to_currency cost.unit_price, :precision => 0, :unit => "円" %></td>
+            <td><%= cost.count %></td>
+            <td><%= number_to_currency (cost.count || 0) * (cost.unit_price || 0), :precision => 0, :unit => "円" %></td>
+            <td><%= check_box_tag 'alone_journal_ids[]', journal.id %></td>
+          </tr>
+        <% end %>
+      <% else %>
         <tr>
           <td><%=journal.start_at.try(:strftime, "%Y-%m-%d") %></td>
           <td><%=journal.content %></td>
-          <td><%= t(cost.unit) %></td>
-          <td><%= number_to_currency cost.unit_price, :precision => 0, :unit => "円" %></td>
-          <td><%= cost.count %></td>
-          <td><%= number_to_currency (cost.count || 0) * (cost.unit_price || 0), :precision => 0, :unit => "円" %></td>
-          <td>&nbsp;</td>
-        </tr>
-      <% end %>
-    <% else %>
-        <tr>
-          <td><%=journal.start_at.try(:strftime, "%Y-%m-%d") %></td>
-          <td><%=journal.content %></td>
-          <td colspan="5">日誌ページで請求を追加してください。&nbsp;<%= link_to "請求追加", new_journal_cost_path(journal), class: "btn btn-danger btn-xs" %></td>
+          <td colspan="5">日誌ページで請求を追加してください。&nbsp;<%= link_to "追加", new_journal_cost_path(journal), class: "btn btn-danger btn-xs" %></td>
         </tr>
     <% end %>
   <% end %>
 </table>
+
 </div>
 
 <%= link_to '項目編集', "javascript:void(0)", class: "btn btn-danger btn-sm pull-right", id: "open_journal_add_area" %>
 
-<%= link_to 'キャンセル', "javascript:void(0)", class: "pull-right", id: "close_journal_add_area", style: "display:none" %>
+<div id="close_journal_add_area" style="display:none" class="pull-right">
+<%= link_to 'キャンセル', "javascript:void(0)" %>&nbsp;or&nbsp;
+<%= f.submit '更新', class: "btn btn-primary btn-sm" %>
+</div>
+<% end %>
 
 <div>&nbsp;</div>
