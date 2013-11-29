@@ -16,6 +16,10 @@
       <%= f.label :name %><br>
       <%= f.text_field :name, class: "form-control" %>
     </div>
+    <div class="form-group col-md-12">
+      <%= f.label :president %><br>
+      <%= f.text_field :president, class: "form-control" %>
+    </div>
     <div class="form-group col-md-2">
       <%= f.label :zip %><br>
       <%= f.text_field :zip, class: "form-control" %>
@@ -33,12 +37,12 @@
       <%= f.text_field :fax, class: "form-control" %>
     </div>
     <div class="form-group col-md-6">
-      <%= f.label :president %><br>
-      <%= f.text_field :president, class: "form-control" %>
-    </div>
-    <div class="form-group col-md-6">
       <%= f.label :email %><br>
       <%= f.text_field :email, class: "form-control" %>
+    </div>
+    <div class="form-group col-md-6">
+      <%= f.label :close_day %><br>
+      <%= f.text_field :close_day, class: "form-control" %>日
     </div>
     <div class="actions">
       <%= f.submit class: "btn btn-primary btn-sm" %>
