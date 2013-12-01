@@ -57,13 +57,11 @@ class JournalsController < ApplicationController
     @invoice  = Invoice.find(params[:invoice_id].to_i)
     @journals = @invoice.journals
 
-    if params[:belong_journal_ids].present?
-      delete_journal_ids = @journals.map{|j| j.id} - params[:belong_journal_ids].map{|s| s.to_i}
-      if delete_journal_ids.present?
-        delete_journal_ids.each do |journal_id|
-          journal = Journal.find(journal_id)
-          journal.update_attributes(invoice_id: nil)
-        end
+    delete_journal_ids = @journals.map{|j| j.id} - (params[:belong_journal_ids] || [nil]).map{|s| s.to_i}
+    if delete_journal_ids.present?
+      delete_journal_ids.each do |journal_id|
+        journal = Journal.find(journal_id)
+        journal.update_attributes(invoice_id: nil)
       end
     end
 
