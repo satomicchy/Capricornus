@@ -34,7 +34,11 @@
     </tr>
     <tr>
       <th>支払済</th>
-      <td><%= @invoice.payment %></td>
+      <td>
+        <% if @invoice.payment == true %>
+          <span class="glyphicon glyphicon-thumbs-up"></span>
+        <% end %>
+      </td>
     </tr>
     <tr>
       <th>キャンセル</th>

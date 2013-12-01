@@ -25,6 +25,10 @@
       <td><%= f.select :custom_id, Custom.all.map{|c| [c.name, c.id]} %></td>
     </tr>
     <tr>
+      <th><%= f.label :payment %></th>
+      <td><%= f.check_box :payment %></td>
+    </tr>
+    <tr>
       <th><%= f.label :memo %></th>
       <td><%= f.text_area :memo, class: "form-control" %></td>
     </tr>
