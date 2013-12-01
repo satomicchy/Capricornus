@@ -228,7 +228,7 @@ ja:
         content: 内容
         city: 場所
         custom_id: 取引先
-        complete: 完了
+        complete: 作業完了
         invoice_id: 請求書
         estimate_id: 見積書
         user_id: 実施者

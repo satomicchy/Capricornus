@@ -39,7 +39,13 @@
     <% if request.path_parameters[:action] == "edit"%>
       <tr>
         <th><%= f.label :invoice_id %></th>
-        <td><%= f.number_field :invoice_id, class: "form-control" %></td>
+        <td>
+          <% if @journal.custom_id %>
+            請求日&nbsp;<%= f.select :invoice_id, Invoice.unfinished_payment.where(custom_id: @journal.custom_id).map{|c| [c.ask_on, c.id]}, include_blank: '保留' %>
+          <% else %>
+            取引先を設定してください。
+          <% end %>
+        </td>
       </tr>
     <% end %>
     <tr>

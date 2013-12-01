@@ -6,7 +6,7 @@
   <div class="panel-heading">
     <strong><%= @journal.start_at.try(:strftime, "%Y-%m-%d") %></strong>
     &nbsp;&nbsp;
-    <%= link_to '編集', edit_journal_path(@journal), class: "btn btn-danger btn-xs" %>
+    <%= link_to '編集', edit_journal_path(@journal), class: "btn btn-danger btn-sm" %>
   </div>
   <table class="table table-bordered">
     <tr>
@@ -30,12 +30,22 @@
       <td><%= @journal.custom.try(:name) %></td>
     </tr>
     <tr>
-      <th>完了</th>
-      <td><%= @journal.complete %></td>
+      <th>作業完了</th>
+      <td>
+        <% if @journal.complete == true %>
+          <span class="glyphicon glyphicon-thumbs-up"></span>
+        <% end %>
+      </td>
     </tr>
     <tr>
       <th>請求書</th>
-      <td><%= @journal.invoice_id %></td>
+      <td>
+        <% if @journal.invoice_id.present? %>
+          請求日&nbsp;<%= @journal.invoice.ask_on.try(:strftime, "%Y-%m-%d") %>
+        <% else %>
+          保留中
+        <% end %>
+      </td>
     </tr>
     <tr>
       <th>実施者</th>
@@ -64,6 +74,6 @@
   </tr>
   <% end %>
 </table>
-<%= link_to '請求追加', new_journal_cost_path(@journal), class: "btn btn-danger btn-sm pull-right" %>
+<%= link_to '項目追加', new_journal_cost_path(@journal), class: "btn btn-danger btn-sm pull-right" %>
 
 <div>&nbsp;</div>
