@@ -23,7 +23,7 @@
         <td><%= journal.content %></td>
         <td><%= link_to '詳細', journal, class: "btn btn-primary btn-sm" %></td>
         <td>
-          <% unless journal.invoice_id.present? && Invoice.find(journal.invoice_id).payment == true %>
+          <% if edit_ok(journal) %>
             <%= link_to '編集', edit_journal_path(journal), class: "btn btn-danger btn-sm" %>
           <% end %>
         </td>

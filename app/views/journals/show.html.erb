@@ -6,7 +6,7 @@
   <div class="panel-heading">
     <strong><%= @journal.start_at.try(:strftime, "%Y-%m-%d") %></strong>
     &nbsp;&nbsp;
-    <% unless edit_ok? %>
+    <% if edit_ok(@journal) %>
       <%= link_to '編集', edit_journal_path(@journal), class: "btn btn-danger btn-sm" %>
     <% end %>
   </div>
@@ -62,7 +62,7 @@
     <th>単価</th>
     <th>数量</th>
     <th>金額</th>
-    <% unless edit_ok? %>
+    <% if edit_ok(@journal) %>
       <th>&nbsp;</th>
       <th>&nbsp;</th>
     <% end %>
@@ -73,14 +73,14 @@
     <td><%= number_to_currency cost.unit_price, :precision => 0, :unit => "円" %></td>
     <td><%= cost.count %></td>
     <td><%= number_to_currency (cost.count || 0) * (cost.unit_price || 0), :precision => 0, :unit => "円" %></td>
-    <% unless edit_ok? %>
+    <% if edit_ok(@journal) %>
       <td><%= link_to journal_cost_path(@journal, cost), method: :delete, data: { confirm: 'Are you sure?' } do %><span class="glyphicon glyphicon-remove text-danger"></span><% end %></td>
       <td><%= link_to '編集', edit_journal_cost_path(@journal, cost), class: "btn btn-danger btn-xs" %></td>
     <% end %>
   </tr>
   <% end %>
 </table>
-<% unless edit_ok? %>
+<% if edit_ok(@journal) %>
   <%= link_to '項目追加', new_journal_cost_path(@journal), class: "btn btn-danger btn-sm pull-right" %>
 <% end %>
 
