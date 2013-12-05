@@ -22,4 +22,11 @@ class JournalTest < ActiveSupport::TestCase
     assert_equal org_invoice_count, Invoice.count
     assert_equal custom.id, journal.custom_id
   end
+
+  test "cannot edit when invoice.payment is true" do
+    journal = journals(:not_edit_journal)
+    custom  = customs(:fish_shop)
+    journal.update_attributes(custom_id: custom.id)
+    assert_not_equal custom.id, journal.reload.custom_id
+  end
 end

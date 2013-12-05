@@ -9,11 +9,11 @@ fish_shop:
   zip: MyString
   email: MyString
 
-two:
-  name: MyString
-  address: MyString
+farmers_shop:
+  name: 農家
+  address: 兵庫県
   tel: MyString
   fax: MyString
-  president: MyString
+  president: ひつじ
   zip: MyString
   email: MyString

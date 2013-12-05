@@ -7,6 +7,9 @@ class Journal < ActiveRecord::Base
 
   after_create :connection_to_invoice
 
+  delegate :payment, to: :invoice, allow_nil: true
+  validates :payment, exclusion: {in: [true]}
+
   def self.current_month(date)
     first_time = date.beginning_of_month.to_time
     end_time   = first_time.end_of_month

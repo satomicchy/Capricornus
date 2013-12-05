@@ -7,7 +7,6 @@ today:
   city: 大阪市
   custom_id: 1
   complete: false
-  invoice_id: 1
   user: kuma
 
 last_month:
@@ -17,7 +16,6 @@ last_month:
   city: 京都市
   custom_id: 1
   complete: false
-  invoice_id: 1
   user: kuma
 
 fishing:
@@ -28,3 +26,13 @@ fishing:
   custom: fish_shop
   complete: true
   user: kuma
+
+not_edit_journal:
+  start_at: 2013-9-1
+  finish_at: 2013-9-1
+  content: はちみつ採取
+  city: 兵庫県
+  custom: farmers_shop
+  complete: true
+  user: kuma
+  invoice: september_finished
