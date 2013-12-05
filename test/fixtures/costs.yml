@@ -1,13 +1,13 @@
 # Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/Fixtures.html
 
-one:
-  count: 1
-  unit: MyString
-  unit_price: 1
-  journal_id: 1
+not_edit_worker:
+  count: 2
+  unit: worker
+  unit_price: 10000
+  journal: not_edit_journal
 
-two:
+neko_bus:
   count: 1
-  unit: MyString
-  unit_price: 1
-  journal_id: 1
+  unit: neko_bus
+  unit_price: 30000
+  journal: today

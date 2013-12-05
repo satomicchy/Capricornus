@@ -26,8 +26,12 @@
       <td><%= @journal.custom.try(:name) %></td>
     </tr>
     <tr>
-      <th>完了</th>
-      <td><%= @journal.complete %></td>
+      <th>作業完了</th>
+      <td>
+        <% if @journal.complete == true %>
+          <span class="glyphicon glyphicon-thumbs-up"></span>
+        <% end %>
+      </td>
     </tr>
     <tr>
       <th>請求書</th>

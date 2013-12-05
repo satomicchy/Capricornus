@@ -2,7 +2,7 @@ require 'test_helper'
 
 class CostsControllerTest < ActionController::TestCase
   setup do
-    @cost = costs(:one)
+    @cost = costs(:neko_bus)
     @journal = journals(:today)
   end
 
