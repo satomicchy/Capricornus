@@ -26,6 +26,7 @@ fishing:
   custom: fish_shop
   complete: true
   user: kuma
+  invoice: october
 
 not_edit_journal:
   start_at: 2013-9-1

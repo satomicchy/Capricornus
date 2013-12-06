@@ -6,4 +6,8 @@ class Cost < ActiveRecord::Base
   validates :payment, exclusion: {in: [true]}
 
   UNIT_TYPE = ['ninku', 'dai']
+
+  after_save do
+    journal.invoice.update_summary if journal.invoice_id.present?
+  end
 end

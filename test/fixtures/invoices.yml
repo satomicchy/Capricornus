@@ -6,7 +6,7 @@ october:
   deadline: 2013-10-30
   custom: fish_shop
   memo: MyText
-  summary: 1
+  summary: 500
 
 september_finished:
   number: MyString

@@ -4,4 +4,9 @@ class Invoice < ActiveRecord::Base
   belongs_to :custom
 
   scope :unfinished_payment, ->(){ where("payment IS NOT ?", true) }
+
+  def update_summary
+    summary = costs.map{|c| c.count * c.unit_price}.inject(:+)
+    update_attributes(summary: summary)
+  end
 end

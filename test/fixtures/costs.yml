@@ -11,3 +11,9 @@ neko_bus:
   unit: neko_bus
   unit_price: 30000
   journal: today
+
+fishing_rod:
+  count: 1
+  unit: rod
+  unit_price: 500
+  journal: fishing
