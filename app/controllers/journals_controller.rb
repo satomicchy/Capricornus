@@ -72,6 +72,8 @@ class JournalsController < ApplicationController
       end
     end
 
+    @invoice.update_summary #need_test!
+
     redirect_to invoice_path(params[:invoice_id])
   end
 
