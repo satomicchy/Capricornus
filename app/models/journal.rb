@@ -9,6 +9,7 @@ class Journal < ActiveRecord::Base
 
   delegate :payment, to: :invoice, allow_nil: true
   validates :payment, exclusion: {in: [true]}
+  validates :start_at, :finish_at, :custom_id, presence: true
 
   def self.current_month(date)
     first_time = date.beginning_of_month.to_time

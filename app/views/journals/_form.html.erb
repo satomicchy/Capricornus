@@ -1,7 +1,7 @@
 <%= form_for(@journal) do |f| %>
   <% if @journal.errors.any? %>
-    <div id="error_explanation">
-      <h2><%= pluralize(@journal.errors.count, "error") %> prohibited this journal from being saved:</h2>
+    <div class="alert alert-danger">
+      <h4><em>足りないところがあるようです・・・。</em></h4>
 
       <ul>
       <% @journal.errors.full_messages.each do |msg| %>
