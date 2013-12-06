@@ -1,10 +1,10 @@
 # Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/Fixtures.html
 
-one:
-  name: MyString
-  branch: MyString
-  type: 
-  number: 1
+gold:
+  name: gold
+  branch: mountain
+  type: futu
+  number: 1234567
 
 two:
   name: MyString

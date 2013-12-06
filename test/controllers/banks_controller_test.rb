@@ -2,7 +2,7 @@ require 'test_helper'
 
 class BanksControllerTest < ActionController::TestCase
   setup do
-    @bank = banks(:one)
+    @bank = banks(:gold)
   end
 
   test "should get index" do
