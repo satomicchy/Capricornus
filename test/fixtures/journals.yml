@@ -2,7 +2,7 @@
 
 today:
   start_at: <%= DateTime.now.midnight + 8.hours %>
-  finish_at: <%= DateTime.now.midnight + 8.hours %>
+  finish_at: <%= DateTime.now.midnight + 10.hours %>
   content: もぐもぐ
   city: 大阪市
   custom_id: 1
@@ -11,7 +11,7 @@ today:
 
 last_month:
   start_at: <%= DateTime.now.midnight + 8.hours - 1.month %>
-  finish_at: <%= DateTime.now.midnight + 8.hours - 1.month %>
+  finish_at: <%= DateTime.now.midnight + 10.hours - 1.month %>
   content: もくもく
   city: 京都市
   custom_id: 1

@@ -5,6 +5,7 @@ class Journal < ActiveRecord::Base
   belongs_to :estimate
   belongs_to :custom
 
+  before_save :correct_period?
   after_create :connection_to_invoice
 
   delegate :payment, to: :invoice, allow_nil: true
@@ -26,6 +27,13 @@ class Journal < ActiveRecord::Base
       new_invoice = Invoice.new(ask_on: ask_on, deadline: ask_on.end_of_month, custom_id: custom_id)
       new_invoice.save
       update_attributes(invoice_id: new_invoice.id)
+    end
+  end
+
+  def correct_period?
+    if start_at >= finish_at
+      errors.add("start_at", "が終業時刻より遅い時間に設定されています。")
+      return false
     end
   end
 end
