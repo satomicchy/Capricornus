@@ -22,7 +22,7 @@
   <tbody>
     <% @invoices.each do |invoice| %>
       <tr>
-        <td><%= invoice.number %></td>
+        <td><%= sprintf "%05d", invoice.id %></td>
         <td><%= invoice.custom.try(:name) %></td>
         <td><%= invoice.ask_on %></td>
         <td><%= invoice.deadline %></td>

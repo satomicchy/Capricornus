@@ -14,7 +14,7 @@
   <table class="table table-bordered">
     <tr>
       <th>番号</th>
-      <td><%= @invoice.number %></td>
+      <td><%= sprintf "%05d", @invoice.id %></td>
     </tr>
     <tr>
       <th>取引先</th>
@@ -30,7 +30,7 @@
     </tr>
     <tr>
       <th>合計額</th>
-      <td><%= @invoice.summary %></td>
+      <td><%= number_to_currency @invoice.summary, :precision => 0, :unit => "円" %></td>
     </tr>
     <tr>
       <th>支払済</th>
