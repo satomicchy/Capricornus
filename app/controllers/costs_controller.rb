@@ -19,6 +19,7 @@ class CostsController < ApplicationController
   def create
     @journal = Journal.find(params[:journal_id])
     @cost    = @journal.costs.new(cost_params)
+    @costs   = @journal.costs
 
     respond_to do |format|
       if @cost.save
@@ -35,6 +36,7 @@ class CostsController < ApplicationController
   # PATCH/PUT /costs/1.json
   def update
     @journal = Journal.find(params[:journal_id])
+    @costs   = @journal.costs
 
     respond_to do |format|
       if @cost.update(cost_params)

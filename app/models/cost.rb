@@ -2,6 +2,8 @@ class Cost < ActiveRecord::Base
   belongs_to :journal
   has_one :invoice, through: :journal
 
+  validates :count, :unit, :unit_price, :journal_id, presence: true
+
   delegate :payment, to: :invoice, allow_nil: true
   validates :payment, exclusion: {in: [true]}
 
