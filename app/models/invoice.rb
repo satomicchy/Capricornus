@@ -3,6 +3,8 @@ class Invoice < ActiveRecord::Base
   has_many :costs, through: :journals
   belongs_to :custom
 
+  validates :ask_on, :deadline, :custom_id, presence: true
+
   scope :unfinished_payment, ->(){ where("payment IS NOT ?", true) }
 
   def update_summary
