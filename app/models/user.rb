@@ -5,4 +5,6 @@ class User < ActiveRecord::Base
          :recoverable, :rememberable, :trackable, :validatable
   has_many :journals
   belongs_to :company
+
+  validates :name, presence: true
 end
