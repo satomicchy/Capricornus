@@ -1,6 +1,11 @@
 class InvoicesController < ApplicationController
   before_action :set_invoice, only: [:show, :edit, :update, :destroy]
 
+  def export_pdf
+    @invoice = Invoice.find(params[:invoice_id])
+    render params[:invoice]
+  end
+
   # GET /invoices
   # GET /invoices.json
   def index

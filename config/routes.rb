@@ -4,6 +4,7 @@ Capricornus::Application.routes.draw do
 
   resources :invoices do
     put ':invoice_id/journals', to: "journals#update_all", on: :collection, as: 'update_journals'
+    get 'export_pdf'
   end
 
   resources :journals, except: [:index] do

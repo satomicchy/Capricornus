@@ -16,6 +16,7 @@
       <th>請求日</th>
       <th>期限</th>
       <th>&nbsp;</th>
+      <th>&nbsp;</th>
     </tr>
   </thead>
 
@@ -27,6 +28,7 @@
         <td><%= invoice.ask_on %></td>
         <td><%= invoice.deadline %></td>
         <td><%= link_to '詳細', invoice, class: "btn btn-primary btn-sm" %></td>
+        <td><%= link_to 'ダウンロード', invoice_export_pdf_path(invoice, format: :pdf), class: "btn btn-primary btn-sm" %></td>
       </tr>
     <% end %>
   </tbody>

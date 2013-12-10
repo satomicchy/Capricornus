@@ -46,4 +46,9 @@ class InvoicesControllerTest < ActionController::TestCase
 
     assert_redirected_to invoices_path
   end
+
+  test "should get pdf" do
+    get :export_pdf, invoice_id: @invoice, format: :pdf
+    assert_response :success
+  end
 end
