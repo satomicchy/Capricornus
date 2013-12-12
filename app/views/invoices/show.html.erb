@@ -1,7 +1,11 @@
 <div id="invoice_edit_title" style="display:none">
   <h3 class="text-danger"><em>請求書編集中</em></h3>
 </div>
-<h3>請求書詳細</h3>
+<h3>
+  請求書詳細
+  &nbsp;&nbsp;
+  <%= link_to 'ダウンロード', invoice_export_pdf_path(@invoice, format: :pdf), class: "btn btn-danger btn-sm pull-right" %> 
+</h3>
 
 <p id="notice"><%= notice %></p>
 
