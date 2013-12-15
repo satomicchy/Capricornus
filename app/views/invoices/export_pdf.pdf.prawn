@@ -4,6 +4,7 @@ Prawn::Document.send(:include, ActionView::Helpers::NumberHelper)
 prawn_document(filename: "請求書.pdf", page_size: "A4") do |pdf|
   pdf.instance_exec(@invoice) do |invoice|
     company  = Company.all.first
+    bank     = Bank.all.first
     custom   = invoice.custom
     journals = invoice.journals.order("start_at")
 
@@ -115,6 +116,21 @@ prawn_document(filename: "請求書.pdf", page_size: "A4") do |pdf|
 
     table summary_table, position: 333, column_widths: [130, 60], :cell_style => {align: :right}
 
+    #memo
+    memo_x = 0
+    memo_y = 100
+    text_box "備考", at: [memo_x, memo_y]
+    bounding_box([memo_x, memo_y - 15], width: 530, height: 40) do
+      bounding_box([5, 35], width: 530) do
+        text invoice.memo, align: :left
+      end
+      transparent(1.0) { stroke_bounds }
+    end
+
+    #bank
+    bank_x = 0
+    bank_y = 35
+    text_box "【お振込先】#{bank.name} #{bank.branch} #{I18n.t(bank.type)} #{bank.number} 名義人", at: [bank_x, bank_y], size: 12
+    text_box "恐れ入りますが、振込手数料は貴社にてご負担ください。", at: [bank_x + 5, bank_y - 18]
   end
 end
-
