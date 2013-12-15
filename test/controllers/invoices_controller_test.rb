@@ -49,6 +49,9 @@ class InvoicesControllerTest < ActionController::TestCase
 
   test "should get pdf" do
     get :export_pdf, invoice_id: @invoice, format: :pdf
+    File.open(Rails.root.join("tmp", "test.pdf"), 'w:BINARY:UTF-8') do |f|
+      f.write(response.body)
+    end
     assert_response :success
   end
 end

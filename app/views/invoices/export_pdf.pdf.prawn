@@ -97,6 +97,7 @@ prawn_document(filename: "請求書.pdf", page_size: "A4") do |pdf|
       header_width = [35, 298, 35, 35, 60, 60]
       header.each_with_index do |cell, i|
         cell.width = header_width[i]
+        #FIXME! It raises exception when cell text is longer than cell width.
       end
       header.style align: :center
 
