@@ -5,6 +5,7 @@ gold:
   branch: mountain
   type: futu
   number: 1234567
+  account_holder: くまー
 
 two:
   name: MyString

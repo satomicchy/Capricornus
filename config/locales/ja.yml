@@ -222,6 +222,7 @@ ja:
         branch: 支店名
         type: 種類
         number: 口座番号
+        account_holder: 名義（カナ）
       journal:
         start_at: 始業時刻
         finish_at: 終業時刻

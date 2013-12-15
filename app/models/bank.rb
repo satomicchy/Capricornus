@@ -4,5 +4,5 @@ class Bank < ActiveRecord::Base
   TYPE = ['futsu', 'touza']
   self.inheritance_column = :_type
 
-  validates :name, :branch, :type, :number, presence: true
+  validates :name, :branch, :type, :number, :account_holder, presence: true
 end

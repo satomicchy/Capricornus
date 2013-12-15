@@ -18,7 +18,7 @@ class BanksControllerTest < ActionController::TestCase
 
   test "should create bank" do
     assert_difference('Bank.count') do
-      post :create, bank: { branch: @bank.branch, name: @bank.name, number: @bank.number, type: @bank.type }
+      post :create, bank: { branch: @bank.branch, name: @bank.name, number: @bank.number, type: @bank.type, account_holder: @bank.account_holder }
     end
 
     assert_redirected_to banks_path
