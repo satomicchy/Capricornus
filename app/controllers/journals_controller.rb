@@ -1,6 +1,10 @@
 class JournalsController < ApplicationController
   before_action :set_journal, only: [:show, :edit, :update, :destroy]
 
+  def calendar
+
+  end
+
   # GET /journals
   # GET /journals.json
   def index

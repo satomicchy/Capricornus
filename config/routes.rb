@@ -7,6 +7,8 @@ Capricornus::Application.routes.draw do
     get 'export_pdf'
   end
 
+  get 'calendar', to: 'journals#calendar', as: 'calendar'
+
   resources :journals, except: [:index] do
     get ':year/:month', to: :index, on: :collection, as: 'monthly', constraints: {year: /\d+/, month: /\d+/}
     resources :costs
