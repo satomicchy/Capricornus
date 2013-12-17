@@ -17,4 +17,5 @@
 //= require bootstrap
 //= require bootstrap-datetimepicker
 //= require bootstrap-datetimepicker.ja
+//= require fullcalendar.min
 //= require_tree .
