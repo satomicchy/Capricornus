@@ -6,7 +6,7 @@ class JournalsControllerTest < ActionController::TestCase
   end
 
   test "should get index" do
-    get :index
+    get :index, year: "2013", month: "12"
     assert_response :success
     assert_not_nil assigns(:journals)
   end

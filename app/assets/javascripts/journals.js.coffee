@@ -5,59 +5,46 @@ jQuery ($) ->
     autoclose: true,
     language: 'ja'
 
-	$(document).ready ->
-		date = new Date()
-		d = date.getDate()
-		m = date.getMonth()
-		y = date.getFullYear()
+  get_events = (start, end, callback) ->
+    events = []
+    date = new Date()
+    d = date.getDate()
+    m = date.getMonth()
+    y = date.getFullYear()
 
-		$('#calendar').fullCalendar {
-			dayNamesShort: ['日','月','火','水','木','金','土'],
-			editable: true,
-			events: [
-				{
-					title: 'Long Event',
-					start: new Date(y, m, d-5),
-					end: new Date(y, m, d-2)
-				},
-				{
-					title: 'All Day Event',
-					start: new Date(y, m, 1)
-				},
-				{
-					id: 999,
-					title: 'Repeating Event',
-					start: new Date(y, m, d-3, 16, 0),
-					allDay: false
-				},
-				{
-					id: 999,
-					title: 'Repeating Event',
-					start: new Date(y, m, d+4, 16, 0),
-					allDay: false
-				},
-				{
-					title: 'Meeting',
-					start: new Date(y, m, d, 10, 30),
-					allDay: false
-				},
-				{
-					title: 'Lunch',
-					start: new Date(y, m, d, 12, 0),
-					end: new Date(y, m, d, 14, 0),
-					allDay: false
-				},
-				{
-					title: 'Birthday Party',
-					start: new Date(y, m, d+1, 19, 0),
-					end: new Date(y, m, d+1, 22, 30),
-					allDay: false
-				},
-				{
-					title: 'Click for Google',
-					start: new Date(y, m, 28),
-					end: new Date(y, m, 29),
-					url: 'http://google.com/'
-				}
-			]
-		}
+    $.get("/journals/#{y}/#{m+1}.json").done (response) ->
+      for object in response
+        do (object) ->
+          [start_day, start_time]      = object.start_at.split('.')[0].split('T')
+          [start_y, start_m, start_d]  = start_day.split('-')
+          [start_h, start_mm, start_s] = start_time.split(':')
+          [finish_day, finish_time]       = object.finish_at.split('.')[0].split('T')
+          [finish_y, finish_m, finish_d]  = finish_day.split('-')
+          [finish_h, finish_mm, finish_s] = finish_time.split(':')
+
+          event = {
+            title: object.content + "(" + object.city + ")",
+            start: new Date(start_y, start_m, start_d, start_h, start_mm),
+            end: new Date(finish_y, finish_m, finish_d, finish_h, finish_mm),
+            allDay: false,
+            url: "/journals/#{object.id}"
+          }
+          events = events.concat(event)
+          console.log events
+          callback(events)
+
+  $(document).ready ->
+    $('#calendar').fullCalendar {
+      monthNames: ['1月','2月','3月','4月','5月','6月','7月','8月','9月','10月','11月','12月'],
+      dayNames: ['日曜日','月曜日','火曜日','水曜日','木曜日','金曜日','土曜日'],
+      dayNamesShort: ['日','月','火','水','木','金','土'],
+      buttonText: {
+        today: '今日',
+        month: '月',
+        week: '週',
+        day: '日'
+      },
+
+      editable: true,
+      events: get_events
+    }

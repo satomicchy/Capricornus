@@ -32,7 +32,14 @@
     </div>
     <div class="collapse navbar-collapse navbar-ex1-collapse">
       <ul class="nav navbar-nav">
-        <li><%= link_to '日誌入力', new_journal_path %></li>
+        <li class="dropdown">
+          <a href="#" class="dropdown-toggle" data-toggle="dropdown">日誌<b class="caret"></b></a>
+          <ul class="dropdown-menu">
+            <% date = Date.today %>
+            <li><%= link_to '日誌入力', new_journal_path %></li>
+            <li><%= link_to '日誌一覧', monthly_journals_path(date.year, date.month) %></li>
+          </ul>
+        </li>
         <li><%= link_to '請求書', invoices_path(ongoing: true) %></li>
         <li><%#= link_to '見積書', estimates_path %></li>
       </ul>
