@@ -19,8 +19,8 @@ class InvoicesController < ApplicationController
   # GET /invoices/1
   # GET /invoices/1.json
   def show
-    @journals = @invoice.journals
-    @alone_journals = Journal.where("invoice_id IS NULL")
+    @journals = @invoice.journals.order("start_at")
+    @alone_journals = Journal.where("invoice_id IS NULL").order("start_at")
   end
 
   # GET /invoices/new
