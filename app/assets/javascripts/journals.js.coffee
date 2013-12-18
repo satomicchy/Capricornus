@@ -7,7 +7,9 @@ jQuery ($) ->
 
   get_events = (start, end, callback) ->
     events = []
-    date = new Date()
+    base_time = start.getTime() + 7 * 24 * 60 * 60 * 1000
+
+    date = new Date(base_time)
     d = date.getDate()
     m = date.getMonth()
     y = date.getFullYear()
@@ -22,16 +24,17 @@ jQuery ($) ->
           [finish_y, finish_m, finish_d]  = finish_day.split('-')
           [finish_h, finish_mm, finish_s] = finish_time.split(':')
 
+          start_m_jq  = start_m - 1
+          finish_m_jq = finish_m - 1
           event = {
             title: object.content + "(" + object.city + ")",
-            start: new Date(start_y, start_m, start_d, start_h, start_mm),
-            end: new Date(finish_y, finish_m, finish_d, finish_h, finish_mm),
+            start: new Date(start_y, start_m_jq, start_d, start_h, start_mm),
+            end: new Date(finish_y, finish_m_jq, finish_d, finish_h, finish_mm),
             allDay: false,
             url: "/journals/#{object.id}"
           }
           events = events.concat(event)
-          console.log events
-          callback(events)
+      callback(events)
 
   $(document).ready ->
     $('#calendar').fullCalendar {
@@ -44,7 +47,30 @@ jQuery ($) ->
         week: '週',
         day: '日'
       },
-
+      titleFormat: {
+        month: 'yyyy年MMMM'
+      },
       editable: true,
-      events: get_events
+      events: get_events,
+      eventDrop: (event, dayDelta, minuteDelta, allDay, revertFunc) ->
+        $.post( "/journals.json", journal: {base_id: event.url.split('/')[2], day_delta: dayDelta})
+          .done (res) ->
+            start_m_jq  = res.start_m - 1
+            finish_m_jq = res.finish_m - 1
+            console.log res.id
+            clone = {
+              title: event.title
+              start: new Date(res.start_y, start_m_jq, res.start_d, res.start_h, res.start_mm)
+              end: new Date(res.finish_y, finish_m_jq, res.finish_d, res.finish_h, res.finish_mm)
+              allDay: false,
+              url: "/journals/#{res.id}"
+              }
+            $('#calendar').fullCalendar("renderEvent", clone)
+            revertFunc()
+      dayClick: (click_date, allDay, jsEvent, view) ->
+        $(this).css('background-color', '#FEFAE1')
+        c_d = click_date.getDate()
+        c_m = click_date.getMonth()
+        c_y = click_date.getFullYear()
+        location.href = "/journals/new?date=#{c_y}-#{c_m + 1}-#{c_d}"
     }

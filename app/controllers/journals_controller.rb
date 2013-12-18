@@ -25,7 +25,13 @@ class JournalsController < ApplicationController
 
   # GET /journals/new
   def new
-    @journal = Journal.new
+    if params[:date]
+      (year, month, day) = params[:date].split('-')
+      base_start_time  = Time.new(year.to_i, month.to_i, day.to_i, 8, 0)
+      base_finish_time = Time.new(year.to_i, month.to_i, day.to_i, 17, 0)
+    end
+
+    @journal = Journal.new(start_at: base_start_time, finish_at: base_finish_time)
   end
 
   # GET /journals/1/edit
@@ -35,15 +41,37 @@ class JournalsController < ApplicationController
   # POST /journals
   # POST /journals.json
   def create
-    @journal = Journal.new(journal_params)
+    if params[:journal][:base_id].present?
+      base_journal = Journal.find(params[:journal][:base_id])
+      journal      = base_journal.attributes.reject{|k, v| k == "id" || k == "created_at" || k == "updated_at"}
+      @journal           = Journal.new(journal)
+      @journal.start_at  = @journal.start_at + params[:journal][:day_delta].to_i.days
+      @journal.finish_at = @journal.finish_at + params[:journal][:day_delta].to_i.days
+      @journal.save
 
-    respond_to do |format|
-      if @journal.save
-        format.html { redirect_to @journal, notice: 'Journal was successfully created.' }
-        format.json { render action: 'show', status: :created, location: @journal }
-      else
-        format.html { render action: 'new' }
-        format.json { render json: @journal.errors, status: :unprocessable_entity }
+      base_costs = base_journal.costs
+      if base_costs.present?
+        base_costs.each do |base_cost|
+          cost     = base_cost.attributes.reject{|k, v| k == "id" || k == "created_at" || k == "updated_at"}
+          new_cost            = Cost.new(cost)
+          new_cost.journal_id = @journal.id
+          new_cost.save
+        end
+      end
+
+      respond_to do |format|
+        format.json { render action: 'show'}
+      end
+      return
+    else
+      @journal = Journal.new(journal_params)
+
+      respond_to do |format|
+        if @journal.save
+          format.html { redirect_to @journal, notice: 'Journal was successfully created.' }
+        else
+          format.html { render action: 'new' }
+        end
       end
     end
   end
