@@ -84,8 +84,9 @@ prawn_document(filename: "請求書.pdf", page_size: "A4") do |pdf|
     ##journals
     journals.each do |journal|
       journal.costs.each_with_index do |cost, i|
-        journal_date = i == 0 ? journal.start_at.try(:strftime, "%m/%d") : ""
-        journal_table << [journal_date, journal.content, cost.count, I18n.t(cost.unit), "¥" + number_to_currency(cost.unit_price, precision: 0, unit: ""), "¥" + number_to_currency(cost.count * cost.unit_price, precision: 0, unit: "")]
+        journal_date    = i == 0 ? journal.start_at.try(:strftime, "%m/%d") : ""
+        journal_content = cost.unit == "dai" ? "交通費" : journal.content
+        journal_table << [journal_date, journal_content, cost.count, I18n.t(cost.unit), "¥" + number_to_currency(cost.unit_price, precision: 0, unit: ""), "¥" + number_to_currency(cost.count * cost.unit_price, precision: 0, unit: "")]
       end
     end
 
