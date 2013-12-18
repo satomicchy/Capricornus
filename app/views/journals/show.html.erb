@@ -1,13 +1,16 @@
-<h3>日誌詳細</h3>
+<h3>日誌詳細&nbsp;&nbsp;
+  <% if edit_ok(@journal) %>
+    <%= link_to '編集', edit_journal_path(@journal), class: "btn btn-danger btn-sm" %>
+  <% end %>
+</h3>
 
 <p id="notice"><%= notice %></p>
 
 <div class="panel panel-default">
   <div class="panel-heading">
     <strong><%= @journal.start_at.try(:strftime, "%Y-%m-%d") %></strong>
-    &nbsp;&nbsp;
     <% if edit_ok(@journal) %>
-      <%= link_to '編集', edit_journal_path(@journal), class: "btn btn-danger btn-sm" %>
+      <%= link_to journal_path(@journal), method: :delete, data: { confirm: 'Are you sure?' }, class: "pull-right" do %><span class="glyphicon glyphicon-remove text-danger"></span><% end %>
     <% end %>
   </div>
   <table class="table table-bordered">

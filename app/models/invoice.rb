@@ -1,5 +1,5 @@
 class Invoice < ActiveRecord::Base
-  has_many :journals
+  has_many :journals, :dependent => :destroy
   has_many :costs, through: :journals
   belongs_to :custom
 

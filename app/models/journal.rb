@@ -1,5 +1,5 @@
 class Journal < ActiveRecord::Base
-  has_many   :costs
+  has_many   :costs, :dependent => :destroy
   belongs_to :user
   belongs_to :invoice
   belongs_to :estimate
