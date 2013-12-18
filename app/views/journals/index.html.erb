@@ -1,6 +1,20 @@
-<h2>
-  <%= link_to '前月', monthly_journals_path(prev_month.year, prev_month.month), class: "btn btn-default btn-xs" %>&nbsp;<%= params[:year] || Date.today.year %>年<%= params[:month]  || Date.today.month %>月&nbsp;<%= link_to '次月', monthly_journals_path(next_month.year, next_month.month), class: "btn btn-default btn-xs" %>
-</h2>
+<div style="padding-top: 20px;">
+  <table class="fc-header" style="width: 100%">
+    <tbody>
+      <tr>
+        <td class="fc-header-left">
+          <span class="fc-header-title">
+            <h2><%= params[:year] || Date.today.year %>年<%= params[:month]  || Date.today.month %>月</h2>
+          </span>
+        </td>
+        <td class="fc-header-center"></td>
+        <td class="fc-header-right">
+          <%= link_to monthly_journals_path(prev_month.year, prev_month.month) do %><span class="fc-button fc-button-prev fc-state-default fc-corner-left" unselectable="on" style="-moz-user-select: none;"><span class="fc-text-arrow">‹</span></span><% end %><%= link_to monthly_journals_path(next_month.year, next_month.month) do %><span class="fc-button fc-button-next fc-state-default fc-corner-right" unselectable="on" style="-moz-user-select: none;"><span class="fc-text-arrow">›</span></span><% end %>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+</div>
 
 <table class="table table-condensed">
   <thead>
