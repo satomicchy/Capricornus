@@ -99,7 +99,9 @@
 
 </div>
 
-<%= link_to '項目編集', "javascript:void(0)", class: "btn btn-danger btn-sm pull-right", id: "open_journal_add_area" %>
+<% if @invoice.payment != true %>
+  <%= link_to '項目編集', "javascript:void(0)", class: "btn btn-danger btn-sm pull-right", id: "open_journal_add_area" %>
+<% end %>
 
 <div id="close_journal_add_area" style="display:none" class="pull-right">
 <%= link_to 'キャンセル', "javascript:void(0)" %>&nbsp;or&nbsp;
