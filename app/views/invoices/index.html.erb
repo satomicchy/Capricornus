@@ -28,7 +28,13 @@
         <td><%= invoice.ask_on %></td>
         <td><%= invoice.deadline %></td>
         <td><%= link_to '詳細', invoice, class: "btn btn-primary btn-sm" %></td>
-        <td><%= link_to 'ダウンロード', invoice_export_pdf_path(invoice, format: :pdf), class: "btn btn-danger btn-sm" %></td>
+        <td>
+          <% if download_ok?(invoice) %>
+            <%= link_to 'ダウンロード', invoice_export_pdf_path(invoice, format: :pdf), class: "btn btn-danger btn-sm" %>
+          <% else %>
+            詳細で請求項目を追加してください。
+          <% end %>
+        </td>
       </tr>
     <% end %>
   </tbody>

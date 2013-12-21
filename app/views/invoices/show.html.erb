@@ -6,7 +6,9 @@
   &nbsp;&nbsp;
   <%= link_to '編集', edit_invoice_path(@invoice), class: "btn btn-danger btn-sm" %>
   &nbsp;&nbsp;
-  <%= link_to 'ダウンロード', invoice_export_pdf_path(@invoice, format: :pdf), class: "btn btn-danger btn-sm pull-right" %> 
+  <% if download_ok?(@invoice) %>
+    <%= link_to 'ダウンロード', invoice_export_pdf_path(@invoice, format: :pdf), class: "btn btn-danger btn-sm pull-right" %>
+  <% end %>
 </h3>
 
 <p id="notice"><%= notice %></p>
@@ -99,8 +101,8 @@
 
 </div>
 
-<% if @invoice.payment != true %>
-  <%= link_to '項目編集', "javascript:void(0)", class: "btn btn-danger btn-sm pull-right", id: "open_journal_add_area" %>
+<% if @invoice.payment != true && download_ok?(@invoice) %>
+  <%= link_to '請求内容編集', "javascript:void(0)", class: "btn btn-danger btn-sm pull-right", id: "open_journal_add_area" %>
 <% end %>
 
 <div id="close_journal_add_area" style="display:none" class="pull-right">

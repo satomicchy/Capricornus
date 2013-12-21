@@ -27,6 +27,6 @@
         <tr>
           <td><%=journal.start_at.try(:strftime, "%Y-%m-%d") %></td>
           <td><%=journal.content %></td>
-          <td colspan="5">日誌ページで請求を追加してください。&nbsp;<%= link_to "追加", new_journal_cost_path(journal), class: "btn btn-danger btn-xs" %></td>
+          <td colspan="5">ここから請求項目を追加できます。&nbsp;<%= link_to "追加", new_journal_cost_path(journal), class: "btn btn-danger btn-xs" %></td>
         </tr>
       <% end %>
