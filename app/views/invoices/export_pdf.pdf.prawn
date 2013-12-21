@@ -1,7 +1,7 @@
 # coding: utf-8
 Prawn::Document.send(:include, ActionView::Helpers::NumberHelper)
 
-prawn_document(filename: "請求書.pdf", page_size: "A4") do |pdf|
+prawn_document(filename: "#{@invoice.custom.name}様宛請求書#{@invoice.ask_on.try(:strftime, "%Y年%m月%d日")}分.pdf", page_size: "A4") do |pdf|
   pdf.instance_exec(@invoice) do |invoice|
     company  = Company.all.first
     bank     = Bank.all.first
@@ -132,7 +132,7 @@ prawn_document(filename: "請求書.pdf", page_size: "A4") do |pdf|
     #bank
     bank_x = 0
     bank_y = 35
-    text_box "【お振込先】#{bank.name} #{bank.branch} #{I18n.t(bank.type)} #{bank.number} 名義人", at: [bank_x, bank_y], size: 12
+    text_box "【お振込先】#{bank.name} #{bank.branch} #{I18n.t(bank.type)} #{bank.number} #{bank.account_holder}", at: [bank_x, bank_y], size: 12
     text_box "恐れ入りますが、振込手数料は貴社にてご負担ください。", at: [bank_x + 5, bank_y - 18]
   end
 end
