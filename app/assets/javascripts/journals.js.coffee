@@ -74,3 +74,16 @@ jQuery ($) ->
         c_y = click_date.getFullYear()
         location.href = "/journals/new?date=#{c_y}-#{c_m + 1}-#{c_d}"
     }
+
+  $('body').on "change", "#journal_custom_id", ->
+    select = $('body').find('.invoice_id_selector')
+    $.get("/invoices.json?ongoing=true&custom=#{@value}").done (response) ->
+      select.empty()
+      if response.length == 0
+        console.log $('body').find('.invoice_id_area')
+        $('body').find('.invoice_id_area').html("まだ請求書がないので新しく作成します。")
+      else
+        select.append($("<option>").val("").text("保留"))
+        for object in response
+          do (object) ->
+            select.append($("<option>").val(object.id).text(object.ask_on))

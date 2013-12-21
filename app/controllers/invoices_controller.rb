@@ -9,11 +9,17 @@ class InvoicesController < ApplicationController
   # GET /invoices
   # GET /invoices.json
   def index
-    @invoices = if params[:ongoing] == "true"
+    @invoices = if params[:custom].present? && params[:ongoing] == "true"
+                  Invoice.where("payment IS NOT ?", true).where("cancel IS NOT ?", true).where(custom_id: params[:custom].to_i)
+                elsif params[:ongoing] == "true"
                   Invoice.where("payment IS NOT ?", true).where("cancel IS NOT ?", true)
                 else
                   Invoice.all
                 end
+    respond_to do |format|
+      format.html
+      format.json { render json: @invoices }
+    end
   end
 
   # GET /invoices/1
