@@ -46,7 +46,8 @@
       <th>請求書</th>
       <td>
         <% if @journal.invoice_id.present? %>
-          請求日&nbsp;<%= @journal.invoice.ask_on.try(:strftime, "%Y-%m-%d") %>
+          請求日&nbsp;<%= @journal.invoice.ask_on.try(:strftime, "%Y-%m-%d") %>&nbsp;&nbsp;
+          <%= link_to '詳細', invoice_path(@journal.invoice_id), class: "btn btn-primary btn-xs" %>
         <% else %>
           保留中
         <% end %>
