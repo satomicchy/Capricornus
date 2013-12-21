@@ -5,7 +5,7 @@ class Invoice < ActiveRecord::Base
 
   validates :ask_on, :deadline, :custom_id, presence: true
 
-  scope :unfinished_payment, ->(){ where("payment IS NOT ?", true) }
+  scope :unfinished_payment, ->(){ where("payment IS NULL OR payment = ?", false) }
 
   def update_summary
     summary = costs.map{|c| c.count * c.unit_price}.inject(:+)
