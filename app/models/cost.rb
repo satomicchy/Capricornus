@@ -12,4 +12,8 @@ class Cost < ActiveRecord::Base
   after_save do
     journal.invoice.update_summary if journal.invoice_id.present?
   end
+
+  after_destroy do
+    journal.invoice.update_summary if journal.invoice_id.present?
+  end
 end
