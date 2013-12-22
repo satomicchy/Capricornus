@@ -60,15 +60,17 @@
   <div class="container">
     <div class="row">
       <div class="col-md-12">
+        <% if notice %>
+          <div class="alert alert-info alert-dismissable">
+            <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
+            <%= notice %>
+        <% end %>
+        </div>
         <%= yield %>
-      </div>
-    </div>
 
-    <div class="row">
-      <div class="col-md-12">
         <footer>
           <br />
-          produced by <a href="https://github.com/satomicchy/Capricornus">satomicchy</a>
+          Development by <a href="https://github.com/satomicchy/Capricornus">satomicchy</a>
         </footer>
       </div>
     </div>

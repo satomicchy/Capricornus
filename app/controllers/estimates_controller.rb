@@ -28,7 +28,7 @@ class EstimatesController < ApplicationController
 
     respond_to do |format|
       if @estimate.save
-        format.html { redirect_to @estimate, notice: 'Estimate was successfully created.' }
+        format.html { redirect_to @estimate, notice: '見積が登録されました。' }
         format.json { render action: 'show', status: :created, location: @estimate }
       else
         format.html { render action: 'new' }
@@ -42,7 +42,7 @@ class EstimatesController < ApplicationController
   def update
     respond_to do |format|
       if @estimate.update(estimate_params)
-        format.html { redirect_to @estimate, notice: 'Estimate was successfully updated.' }
+        format.html { redirect_to @estimate, notice: '見積が更新されました。' }
         format.json { head :no_content }
       else
         format.html { render action: 'edit' }

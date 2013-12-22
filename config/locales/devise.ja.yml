@@ -1,0 +1,7 @@
+# Additional translations at https://github.com/plataformatec/devise/wiki/I18n
+
+ja:
+  devise:
+    sessions:
+      signed_in: "正常にサインインできました。"
+      signed_out: "正常にサインアウトできました。"

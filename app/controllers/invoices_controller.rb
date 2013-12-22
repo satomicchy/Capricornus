@@ -46,7 +46,7 @@ class InvoicesController < ApplicationController
 
     respond_to do |format|
       if @invoice.save
-        format.html { redirect_to @invoice, notice: 'Invoice was successfully created.' }
+        format.html { redirect_to @invoice, notice: '請求書が登録されました。' }
         format.json { render action: 'show', status: :created, location: @invoice }
       else
         format.html { render action: 'new' }
@@ -60,7 +60,7 @@ class InvoicesController < ApplicationController
   def update
     respond_to do |format|
       if @invoice.update(invoice_params)
-        format.html { redirect_to @invoice, notice: 'Invoice was successfully updated.' }
+        format.html { redirect_to @invoice, notice: '請求書が更新されました。' }
         format.json { head :no_content }
       else
         format.html { render action: 'edit' }

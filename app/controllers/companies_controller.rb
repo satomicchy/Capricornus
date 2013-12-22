@@ -23,7 +23,7 @@ class CompaniesController < ApplicationController
 
     respond_to do |format|
       if @company.save
-        format.html { redirect_to companies_path, notice: 'Company was successfully created.' }
+        format.html { redirect_to companies_path, notice: '会社情報が登録されました。' }
         format.json { render action: 'show', status: :created, location: @company }
       else
         format.html { render action: 'new' }
@@ -37,7 +37,7 @@ class CompaniesController < ApplicationController
   def update
     respond_to do |format|
       if @company.update(company_params)
-        format.html { redirect_to companies_path, notice: 'Company was successfully updated.' }
+        format.html { redirect_to companies_path, notice: '会社情報が更新されました。' }
         format.json { head :no_content }
       else
         format.html { render action: 'edit' }

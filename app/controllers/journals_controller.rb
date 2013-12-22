@@ -68,7 +68,7 @@ class JournalsController < ApplicationController
 
       respond_to do |format|
         if @journal.save
-          format.html { redirect_to @journal, notice: 'Journal was successfully created.' }
+          format.html { redirect_to @journal, notice: '日誌が登録されました。' }
         else
           format.html { render action: 'new' }
         end
@@ -81,7 +81,7 @@ class JournalsController < ApplicationController
   def update
     respond_to do |format|
       if @journal.update(journal_params)
-        format.html { redirect_to @journal, notice: 'Journal was successfully updated.' }
+        format.html { redirect_to @journal, notice: '日誌が更新されました。' }
         format.json { head :no_content }
       else
         format.html { render action: 'edit' }

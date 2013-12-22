@@ -28,7 +28,7 @@ class CustomsController < ApplicationController
 
     respond_to do |format|
       if @custom.save
-        format.html { redirect_to customs_path, notice: 'Custom was successfully created.' }
+        format.html { redirect_to customs_path, notice: '取引先情報が登録されました。' }
         format.json { render action: 'show', status: :created, location: @custom }
       else
         format.html { render action: 'new' }
@@ -42,7 +42,7 @@ class CustomsController < ApplicationController
   def update
     respond_to do |format|
       if @custom.update(custom_params)
-        format.html { redirect_to customs_path, notice: 'Custom was successfully updated.' }
+        format.html { redirect_to customs_path, notice: '取引先情報が更新されました。' }
         format.json { head :no_content }
       else
         format.html { render action: 'edit' }

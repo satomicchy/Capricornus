@@ -23,7 +23,7 @@ class CostsController < ApplicationController
 
     respond_to do |format|
       if @cost.save
-        format.html { redirect_to journal_path(@journal), notice: 'Cost was successfully created.' }
+        format.html { redirect_to journal_path(@journal), notice: '項目が登録されました。' }
         format.json { render action: 'show', status: :created, location: @cost }
       else
         format.html { render action: 'new' }
@@ -40,7 +40,7 @@ class CostsController < ApplicationController
 
     respond_to do |format|
       if @cost.update(cost_params)
-        format.html { redirect_to journal_path(@journal), notice: 'Cost was successfully updated.' }
+        format.html { redirect_to journal_path(@journal), notice: '項目が更新されました。' }
         format.json { head :no_content }
       else
         format.html { render action: 'edit' }
