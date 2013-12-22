@@ -6,11 +6,13 @@ class Journal < ActiveRecord::Base
   belongs_to :custom
 
   before_save :correct_period?
-  after_create :connection_to_invoice
+  after_save  :connection_to_invoice, if: -> { !done_connection_to_invoice }
 
   delegate :payment, to: :invoice, allow_nil: true
   validates :payment, exclusion: {in: [true]}
   validates :start_at, :finish_at, :custom_id, presence: true
+
+  attr_accessor :done_connection_to_invoice
 
   def self.current_month(date)
     first_time = date.beginning_of_month.to_time
@@ -19,6 +21,7 @@ class Journal < ActiveRecord::Base
   end
 
   def connection_to_invoice
+    self.done_connection_to_invoice = true
     invoice = Invoice.where(custom_id: custom_id).where("? <= ask_on", start_at.to_date).first
     if invoice.present?
       update_attributes(invoice_id: invoice.id)
