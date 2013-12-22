@@ -9,7 +9,7 @@ class InvoicesController < ApplicationController
   # GET /invoices
   # GET /invoices.json
   def index
-    ongoing_invoices = Invoice.all - Invoice.where("payment = ? OR cancel = ?", true, true)
+    ongoing_invoices = Invoice.unfinished_payment
     @invoices = if params[:custom].present? && params[:ongoing] == "true"
                   ongoing_invoices.where(custom_id: params[:custom].to_i)
                 elsif params[:ongoing] == "true"
