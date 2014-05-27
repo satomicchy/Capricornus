@@ -4,7 +4,8 @@ class User < ActiveRecord::Base
   devise :database_authenticatable,
          :recoverable, :rememberable, :trackable, :validatable
   has_many :journals
-  belongs_to :company
+  has_many :members
+  has_many :companies, through: :members
 
   validates :name, presence: true
 end
