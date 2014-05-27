@@ -18,9 +18,10 @@ class CustomsControllerTest < ActionController::TestCase
 
   test "should create custom" do
     assert_difference('Custom.count') do
-      post :create, custom: { address: @custom.address, email: @custom.email, fax: @custom.fax, name: @custom.name, president: @custom.president, tel: @custom.tel, zip: @custom.zip }
+      post :create, custom: { address: @custom.address, email: @custom.email, fax: @custom.fax, name: @custom.name, president: @custom.president, tel: @custom.tel, zip: @custom.zip, company_id: @custom.company_id }
     end
 
+    assert_not_nil assigns(:custom).company_id
     assert_redirected_to customs_path
   end
 
@@ -35,7 +36,9 @@ class CustomsControllerTest < ActionController::TestCase
   end
 
   test "should update custom" do
-    patch :update, id: @custom, custom: { address: @custom.address, email: @custom.email, fax: @custom.fax, name: @custom.name, president: @custom.president, tel: @custom.tel, zip: @custom.zip }
+    patch :update, id: @custom, custom: { address: @custom.address, email: @custom.email, fax: @custom.fax, name: @custom.name, president: @custom.president, tel: @custom.tel, zip: @custom.zip, company_id: @custom.company_id }
+
+    assert_not_nil assigns(:custom).company_id
     assert_redirected_to customs_path
   end
 

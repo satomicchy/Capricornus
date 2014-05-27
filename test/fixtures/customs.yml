@@ -8,6 +8,7 @@ fish_shop:
   president: キングサーモン
   zip: MyString
   email: MyString
+  company: mycompany
 
 farmers_shop:
   name: 農家
@@ -17,3 +18,4 @@ farmers_shop:
   president: ひつじ
   zip: MyString
   email: MyString
+  company: mycompany

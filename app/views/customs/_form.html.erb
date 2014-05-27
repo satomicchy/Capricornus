@@ -13,6 +13,10 @@
 
   <div class="well">
     <div class="form-group col-md-12">
+      <%= f.label :company_id %><br>
+      <%= f.select :company_id, Company.all.map{|c| [c.name, c.id]}, class: "form-control" %>
+    </div>
+    <div class="form-group col-md-12">
       <%= f.label :name %><br>
       <%= f.text_field :name, class: "form-control" %>
     </div>

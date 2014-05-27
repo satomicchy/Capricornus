@@ -4,7 +4,7 @@ class CustomsController < ApplicationController
   # GET /customs
   # GET /customs.json
   def index
-    @customs = Custom.all
+    @customs = Custom.all.group_by{|c| c.company_id}
   end
 
   # GET /customs/1
@@ -69,6 +69,6 @@ class CustomsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def custom_params
-      params.require(:custom).permit(:name, :address, :tel, :fax, :president, :zip, :email)
+      params.require(:custom).permit(:name, :address, :tel, :fax, :president, :zip, :email, :company_id)
     end
 end

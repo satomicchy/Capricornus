@@ -1,41 +1,46 @@
 <h3>取引先情報<%= link_to '新規追加', new_custom_path, class: "btn btn-danger btn-sm pull-right" %></h3>
 
-<% @customs.each do |custom| %>
+<% @customs.each do |company_id, customs| %>
 
-  <div class="panel panel-default bottom-no-margin">
-    <div class="panel-heading">
-      <strong><%= custom.name %></strong>
-      &nbsp;&nbsp;
-      <%= link_to '編集', edit_custom_path(custom), class: "btn btn-danger btn-xs" %>
+  <blockquote><%= customs.first.company.try(:name) %></blockquote>
+
+  <% customs.each do |custom| %>
+
+    <div class="panel panel-default bottom-no-margin">
+      <div class="panel-heading">
+        <strong><%= custom.name %></strong>
+        &nbsp;&nbsp;
+        <%= link_to '編集', edit_custom_path(custom), class: "btn btn-danger btn-xs" %>
+      </div>
+      <table class="table table-bordered">
+        <tr>
+          <td class="col-md-4">郵便番号</td>
+          <td><%= custom.zip %></td>
+        </tr>
+        <tr>
+          <td>住所</td>
+          <td><%= custom.address %></td>
+        </tr>
+        <tr>
+          <td>TEL</td>
+          <td><%= custom.tel %></td>
+        </tr>
+        <tr>
+          <td>FAX</td>
+          <td><%= custom.fax %></td>
+        </tr>
+        <tr>
+          <td>代表者名</td>
+          <td><%= custom.president %></td>
+        </tr>
+        <tr>
+          <td>メールアドレス</td>
+          <td><%= custom.email %></td>
+        </tr>
+      </table>
     </div>
-    <table class="table table-bordered">
-      <tr>
-        <td class="col-md-4">郵便番号</td>
-        <td><%= custom.zip %></td>
-      </tr>
-      <tr>
-        <td>住所</td>
-        <td><%= custom.address %></td>
-      </tr>
-      <tr>
-        <td>TEL</td>
-        <td><%= custom.tel %></td>
-      </tr>
-      <tr>
-        <td>FAX</td>
-        <td><%= custom.fax %></td>
-      </tr>
-      <tr>
-        <td>代表者名</td>
-        <td><%= custom.president %></td>
-      </tr>
-      <tr>
-        <td>メールアドレス</td>
-        <td><%= custom.email %></td>
-      </tr>
-    </table>
-  </div>
 
-  <div>&nbsp;</div>
+    <div>&nbsp;</div>
+  <% end %>
 
 <% end %>
