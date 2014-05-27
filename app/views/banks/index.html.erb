@@ -1,33 +1,37 @@
 <h3>銀行情報<%= link_to '新規追加', new_bank_path, class: "btn btn-danger btn-sm pull-right" %></h3>
 
-<% @banks.each do |bank| %>
+<% @banks.each do |company_id, banks| %>
 
-  <div class="panel panel-default bottom-no-margin">
-    <div class="panel-heading">
-      <strong><%= bank.name %></strong>
-      &nbsp;&nbsp;
-      <%= link_to '編集', edit_bank_path(bank), class: "btn btn-danger btn-xs" %>
+  <blockquote><%= banks.first.company.try(:name) %></blockquote>
+
+  <% banks.each do |bank| %>
+    <div class="panel panel-default bottom-no-margin">
+      <div class="panel-heading">
+        <strong><%= bank.name %></strong>
+        &nbsp;&nbsp;
+        <%= link_to '編集', edit_bank_path(bank), class: "btn btn-danger btn-xs" %>
+      </div>
+      <table class="table table-bordered">
+        <tr>
+          <td class="col-md-4">支店名</td>
+          <td><%= bank.branch %></td>
+        </tr>
+        <tr>
+          <td>種類</td>
+          <td><%= t(bank.type) %></td>
+        </tr>
+        <tr>
+          <td>口座番号</td>
+          <td><%= bank.number %></td>
+        </tr>
+        <tr>
+          <td>名義（カナ）</td>
+          <td><%= bank.account_holder %></td>
+        </tr>
+      </table>
     </div>
-    <table class="table table-bordered">
-      <tr>
-        <td class="col-md-4">支店名</td>
-        <td><%= bank.branch %></td>
-      </tr>
-      <tr>
-        <td>種類</td>
-        <td><%= t(bank.type) %></td>
-      </tr>
-      <tr>
-        <td>口座番号</td>
-        <td><%= bank.number %></td>
-      </tr>
-      <tr>
-        <td>名義（カナ）</td>
-        <td><%= bank.account_holder %></td>
-      </tr>
-    </table>
-  </div>
 
-  <div>&nbsp;</div>
+    <div>&nbsp;</div>
+  <% end %>
 
 <% end %>

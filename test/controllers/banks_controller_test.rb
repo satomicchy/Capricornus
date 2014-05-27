@@ -18,9 +18,10 @@ class BanksControllerTest < ActionController::TestCase
 
   test "should create bank" do
     assert_difference('Bank.count') do
-      post :create, bank: { branch: @bank.branch, name: @bank.name, number: @bank.number, type: @bank.type, account_holder: @bank.account_holder }
+      post :create, bank: { branch: @bank.branch, name: @bank.name, number: @bank.number, type: @bank.type, account_holder: @bank.account_holder, company_id: @bank.company_id }
     end
 
+    assert_not_nil assigns(:bank).company_id
     assert_redirected_to banks_path
   end
 
@@ -31,6 +32,8 @@ class BanksControllerTest < ActionController::TestCase
 
   test "should update bank" do
     patch :update, id: @bank, bank: { branch: @bank.branch, name: @bank.name, number: @bank.number, type: @bank.type }
+
+    assert_not_nil assigns(:bank).company_id
     assert_redirected_to banks_path
   end
 

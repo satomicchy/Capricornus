@@ -6,6 +6,7 @@ gold:
   type: futu
   number: 1234567
   account_holder: くまー
+  company: mycompany
 
 two:
   name: MyString
