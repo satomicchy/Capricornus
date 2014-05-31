@@ -1,0 +1,21 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/Fixtures.html
+
+fish_shop:
+  name: 魚屋
+  address: 北海道
+  tel: MyString
+  fax: MyString
+  president: キングサーモン
+  zip: MyString
+  email: MyString
+  company: mycompany
+
+farmers_shop:
+  name: 農家
+  address: 兵庫県
+  tel: MyString
+  fax: MyString
+  president: ひつじ
+  zip: MyString
+  email: MyString
+  company: mycompany
