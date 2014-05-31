@@ -1,10 +1,10 @@
-class CustomsController < ApplicationController
+class CustomersController < ApplicationController
   before_action :set_custom, only: [:show, :edit, :update, :destroy]
 
   # GET /customs
   # GET /customs.json
   def index
-    @customs = Custom.all.group_by{|c| c.company_id}
+    @customs = Customer.all.group_by{|c| c.company_id}
   end
 
   # GET /customs/1
@@ -14,7 +14,7 @@ class CustomsController < ApplicationController
 
   # GET /customs/new
   def new
-    @custom = Custom.new
+    @custom = Customer.new
   end
 
   # GET /customs/1/edit
@@ -24,7 +24,7 @@ class CustomsController < ApplicationController
   # POST /customs
   # POST /customs.json
   def create
-    @custom = Custom.new(custom_params)
+    @custom = Customer.new(custom_params)
 
     respond_to do |format|
       if @custom.save
@@ -64,7 +64,7 @@ class CustomsController < ApplicationController
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_custom
-      @custom = Custom.find(params[:id])
+      @custom = Customer.find(params[:id])
     end
 
     # Never trust parameters from the scary internet, only allow the white list through.

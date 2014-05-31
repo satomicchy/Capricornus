@@ -1,6 +1,6 @@
 require 'test_helper'
 
-class CustomsControllerTest < ActionController::TestCase
+class CustomersControllerTest < ActionController::TestCase
   setup do
     @custom = customs(:fish_shop)
   end
@@ -17,7 +17,7 @@ class CustomsControllerTest < ActionController::TestCase
   end
 
   test "should create custom" do
-    assert_difference('Custom.count') do
+    assert_difference('Customer.count') do
       post :create, custom: { address: @custom.address, email: @custom.email, fax: @custom.fax, name: @custom.name, president: @custom.president, tel: @custom.tel, zip: @custom.zip, company_id: @custom.company_id }
     end
 
@@ -43,7 +43,7 @@ class CustomsControllerTest < ActionController::TestCase
   end
 
   test "should destroy custom" do
-    assert_difference('Custom.count', -1) do
+    assert_difference('Customer.count', -1) do
       delete :destroy, id: @custom
     end
 

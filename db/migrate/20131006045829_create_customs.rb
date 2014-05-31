@@ -1,4 +1,4 @@
-class CreateCustoms < ActiveRecord::Migration
+class CreateCustomers < ActiveRecord::Migration
   def change
     create_table :customs do |t|
       t.string :name
