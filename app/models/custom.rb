@@ -3,4 +3,6 @@ class Custom < ActiveRecord::Base
 
   has_many :invoices
   has_many :estimates
+
+  validates :name, :company_id, presence: true
 end
