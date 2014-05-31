@@ -45,7 +45,7 @@ ActiveRecord::Schema.define(version: 20140526094433) do
     t.datetime "updated_at"
   end
 
-  create_table "customs", force: true do |t|
+  create_table "customers", force: true do |t|
     t.string   "name"
     t.string   "address"
     t.string   "tel"
@@ -63,7 +63,7 @@ ActiveRecord::Schema.define(version: 20140526094433) do
     t.string   "title"
     t.date     "deadline"
     t.string   "requirement"
-    t.integer  "custom_id"
+    t.integer  "customer_id"
     t.text     "memo"
     t.integer  "summary"
     t.boolean  "cancel"
@@ -76,7 +76,7 @@ ActiveRecord::Schema.define(version: 20140526094433) do
     t.string   "number"
     t.date     "ask_on"
     t.date     "deadline"
-    t.integer  "custom_id"
+    t.integer  "customer_id"
     t.text     "memo"
     t.integer  "summary"
     t.boolean  "payment"
@@ -88,7 +88,7 @@ ActiveRecord::Schema.define(version: 20140526094433) do
   create_table "journals", force: true do |t|
     t.text     "content"
     t.string   "city"
-    t.integer  "custom_id"
+    t.integer  "customer_id"
     t.boolean  "complete"
     t.integer  "invoice_id"
     t.integer  "estimate_id"

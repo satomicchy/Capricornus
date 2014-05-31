@@ -16,7 +16,7 @@ Capricornus::Application.routes.draw do
 
   resources :banks
 
-  resources :customs
+  resources :customers
 
   resources :companies
 

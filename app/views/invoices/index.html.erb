@@ -24,7 +24,7 @@
     <% @invoices.each do |invoice| %>
       <tr>
         <td><%= sprintf "%05d", invoice.id %></td>
-        <td><%= invoice.custom.try(:name) %></td>
+        <td><%= invoice.customer.try(:name) %></td>
         <td><%= invoice.ask_on %></td>
         <td><%= invoice.deadline %></td>
         <td><%= link_to '詳細', invoice, class: "btn btn-primary btn-sm" %></td>

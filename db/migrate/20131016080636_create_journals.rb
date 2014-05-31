@@ -4,7 +4,7 @@ class CreateJournals < ActiveRecord::Migration
       t.datetime :work_on
       t.text :content
       t.string :city
-      t.integer :custom_id
+      t.integer :customer_id
       t.boolean :travel_expenses
       t.boolean :complete
       t.integer :invoice_id

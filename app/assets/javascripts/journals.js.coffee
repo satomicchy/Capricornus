@@ -75,9 +75,9 @@ jQuery ($) ->
         location.href = "/journals/new?date=#{c_y}-#{c_m + 1}-#{c_d}"
     }
 
-  $('body').on "change", "#journal_custom_id", ->
+  $('body').on "change", "#journal_customer_id", ->
     select = $('body').find('.invoice_id_selector')
-    $.get("/invoices.json?ongoing=true&custom=#{@value}").done (response) ->
+    $.get("/invoices.json?ongoing=true&customer=#{@value}").done (response) ->
       select.empty()
       if response.length == 0
         console.log $('body').find('.invoice_id_area')

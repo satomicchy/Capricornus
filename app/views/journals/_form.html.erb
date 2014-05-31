@@ -29,8 +29,8 @@
       <td><%= f.text_field :city, class: "form-control" %></td>
     </tr>
     <tr>
-      <th><%= f.label :custom_id %></th>
-      <td><%= f.select :custom_id, Customer.all.map{|c| [c.name, c.id]}, {} %></td>
+      <th><%= f.label :customer_id %></th>
+      <td><%= f.select :customer_id, Customer.all.map{|c| [c.name, c.id]}, {} %></td>
     </tr>
     <tr>
       <th><%= f.label :complete %></th>
@@ -40,7 +40,7 @@
       <tr>
         <th><%= f.label :invoice_id %></th>
         <td class="invoice_id_area">
-          請求日&nbsp;<%= f.select :invoice_id, Invoice.unfinished_payment.where(custom_id: @journal.custom_id).map{|c| [c.ask_on, c.id]}, {include_blank: '保留'}, class: "invoice_id_selector" %>
+          請求日&nbsp;<%= f.select :invoice_id, Invoice.unfinished_payment.where(customer_id: @journal.customer_id).map{|c| [c.ask_on, c.id]}, {include_blank: '保留'}, class: "invoice_id_selector" %>
         </td>
       </tr>
     <% end %>

@@ -4,7 +4,7 @@ class CreateInvoices < ActiveRecord::Migration
       t.string :number
       t.date :ask_on
       t.date :deadline
-      t.integer :custom_id
+      t.integer :customer_id
       t.text :memo
       t.integer :summary
       t.boolean :payment

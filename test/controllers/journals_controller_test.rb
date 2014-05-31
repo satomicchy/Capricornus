@@ -18,7 +18,7 @@ class JournalsControllerTest < ActionController::TestCase
 
   test "should create journal" do
     assert_difference('Journal.count') do
-      post :create, journal: { city: @journal.city, complete: @journal.complete, content: @journal.content, custom_id: @journal.custom_id, invoice_id: @journal.invoice_id, user_id: @journal.user_id, start_at: @journal.start_at, finish_at: @journal.finish_at }
+      post :create, journal: { city: @journal.city, complete: @journal.complete, content: @journal.content, customer_id: @journal.customer_id, invoice_id: @journal.invoice_id, user_id: @journal.user_id, start_at: @journal.start_at, finish_at: @journal.finish_at }
     end
 
     assert_redirected_to journal_path(assigns(:journal))
@@ -35,7 +35,7 @@ class JournalsControllerTest < ActionController::TestCase
   end
 
   test "should update journal" do
-    patch :update, id: @journal, journal: { city: @journal.city, complete: @journal.complete, content: @journal.content, custom_id: @journal.custom_id, invoice_id: @journal.invoice_id, user_id: @journal.user_id, start_at: @journal.start_at }
+    patch :update, id: @journal, journal: { city: @journal.city, complete: @journal.complete, content: @journal.content, customer_id: @journal.customer_id, invoice_id: @journal.invoice_id, user_id: @journal.user_id, start_at: @journal.start_at }
     assert_redirected_to journal_path(assigns(:journal))
   end
 

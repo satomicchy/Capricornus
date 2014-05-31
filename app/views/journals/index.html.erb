@@ -33,7 +33,7 @@
       <tr>
         <td><%= journal.start_at.try(:strftime, "%Y-%m-%d %H:%M") %>〜</td>
         <td><%= journal.city %></td>
-        <td><%= journal.custom.try(:name) %></td>
+        <td><%= journal.customer.try(:name) %></td>
         <td><%= journal.content %></td>
         <td><%= link_to '詳細', journal, class: "btn btn-primary btn-sm" %></td>
         <td>

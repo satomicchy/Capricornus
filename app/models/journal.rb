@@ -3,14 +3,14 @@ class Journal < ActiveRecord::Base
   belongs_to :user
   belongs_to :invoice
   belongs_to :estimate
-  belongs_to :custom
+  belongs_to :customer
 
   before_save :correct_period?
   after_save  :connection_to_invoice, if: -> { !done_connection_to_invoice }
 
   delegate :payment, to: :invoice, allow_nil: true
   validates :payment, exclusion: {in: [true]}
-  validates :start_at, :finish_at, :custom_id, presence: true
+  validates :start_at, :finish_at, :customer_id, presence: true
 
   attr_accessor :done_connection_to_invoice
 
@@ -22,12 +22,12 @@ class Journal < ActiveRecord::Base
 
   def connection_to_invoice
     self.done_connection_to_invoice = true
-    invoice = Invoice.where(custom_id: custom_id).where("? <= ask_on", start_at.to_date).first
+    invoice = Invoice.where(customer_id: customer_id).where("? <= ask_on", start_at.to_date).first
     if invoice.present?
       update_attributes(invoice_id: invoice.id)
     else
       ask_on      = Date.new(start_at.year, start_at.month, Company.all.first.close_day)
-      new_invoice = Invoice.new(ask_on: ask_on, deadline: ask_on.end_of_month, custom_id: custom_id)
+      new_invoice = Invoice.new(ask_on: ask_on, deadline: ask_on.end_of_month, customer_id: customer_id)
       new_invoice.save
       update_attributes(invoice_id: new_invoice.id)
     end

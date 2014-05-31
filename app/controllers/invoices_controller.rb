@@ -10,8 +10,8 @@ class InvoicesController < ApplicationController
   # GET /invoices.json
   def index
     ongoing_invoices = Invoice.unfinished_payment
-    @invoices = if params[:custom].present? && params[:ongoing] == "true"
-                  ongoing_invoices.where(custom_id: params[:custom].to_i)
+    @invoices = if params[:customer].present? && params[:ongoing] == "true"
+                  ongoing_invoices.where(customer_id: params[:customer].to_i)
                 elsif params[:ongoing] == "true"
                   ongoing_invoices
                 else
@@ -87,6 +87,6 @@ class InvoicesController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def invoice_params
-      params.require(:invoice).permit(:number, :ask_on, :deadline, :custom_id, :memo, :summary, :payment)
+      params.require(:invoice).permit(:number, :ask_on, :deadline, :customer_id, :memo, :summary, :payment)
     end
 end

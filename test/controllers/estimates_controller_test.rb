@@ -18,7 +18,7 @@ class EstimatesControllerTest < ActionController::TestCase
 
   test "should create estimate" do
     assert_difference('Estimate.count') do
-      post :create, estimate: { custom_id: @estimate.custom_id, deadline: @estimate.deadline, memo: @estimate.memo, number: @estimate.number, requirement: @estimate.requirement, summary: @estimate.summary, title: @estimate.title }
+      post :create, estimate: { customer_id: @estimate.customer_id, deadline: @estimate.deadline, memo: @estimate.memo, number: @estimate.number, requirement: @estimate.requirement, summary: @estimate.summary, title: @estimate.title }
     end
 
     assert_redirected_to estimate_path(assigns(:estimate))
@@ -35,7 +35,7 @@ class EstimatesControllerTest < ActionController::TestCase
   end
 
   test "should update estimate" do
-    patch :update, id: @estimate, estimate: { custom_id: @estimate.custom_id, deadline: @estimate.deadline, memo: @estimate.memo, number: @estimate.number, requirement: @estimate.requirement, summary: @estimate.summary, title: @estimate.title }
+    patch :update, id: @estimate, estimate: { customer_id: @estimate.customer_id, deadline: @estimate.deadline, memo: @estimate.memo, number: @estimate.number, requirement: @estimate.requirement, summary: @estimate.summary, title: @estimate.title }
     assert_redirected_to estimate_path(assigns(:estimate))
   end
 

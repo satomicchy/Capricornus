@@ -13,7 +13,7 @@
 
 <div class="panel panel-default">
   <div class="panel-heading">
-    <strong><%= @invoice.custom.try(:name) %>様宛&nbsp;&nbsp;<%= @invoice.ask_on %>請求分</strong>
+    <strong><%= @invoice.customer.try(:name) %>様宛&nbsp;&nbsp;<%= @invoice.ask_on %>請求分</strong>
     <% if @invoice.payment != true %>
       <%= link_to invoice_path(@invoice), method: :delete, data: { confirm: '関連した日誌もすべて削除しますが、よろしいですか？' }, class: "pull-right" do %><span class="glyphicon glyphicon-remove text-danger"></span><% end %>
     <% end %>
@@ -25,7 +25,7 @@
     </tr>
     <tr>
       <th>取引先</th>
-      <td><%= @invoice.custom.try(:name) %></td>
+      <td><%= @invoice.customer.try(:name) %></td>
     </tr>
     <tr>
       <th>請求日</th>

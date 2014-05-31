@@ -1,74 +1,74 @@
 class CustomersController < ApplicationController
-  before_action :set_custom, only: [:show, :edit, :update, :destroy]
+  before_action :set_customer, only: [:show, :edit, :update, :destroy]
 
-  # GET /customs
-  # GET /customs.json
+  # GET /customers
+  # GET /customers.json
   def index
-    @customs = Customer.all.group_by{|c| c.company_id}
+    @customers = Customer.all.group_by{|c| c.company_id}
   end
 
-  # GET /customs/1
-  # GET /customs/1.json
+  # GET /customers/1
+  # GET /customers/1.json
   def show
   end
 
-  # GET /customs/new
+  # GET /customers/new
   def new
-    @custom = Customer.new
+    @customer = Customer.new
   end
 
-  # GET /customs/1/edit
+  # GET /customers/1/edit
   def edit
   end
 
-  # POST /customs
-  # POST /customs.json
+  # POST /customers
+  # POST /customers.json
   def create
-    @custom = Customer.new(custom_params)
+    @customer = Customer.new(customer_params)
 
     respond_to do |format|
-      if @custom.save
-        format.html { redirect_to customs_path, notice: '取引先情報が登録されました。' }
-        format.json { render action: 'show', status: :created, location: @custom }
+      if @customer.save
+        format.html { redirect_to customers_path, notice: '取引先情報が登録されました。' }
+        format.json { render action: 'show', status: :created, location: @customer }
       else
         format.html { render action: 'new' }
-        format.json { render json: @custom.errors, status: :unprocessable_entity }
+        format.json { render json: @customer.errors, status: :unprocessable_entity }
       end
     end
   end
 
-  # PATCH/PUT /customs/1
-  # PATCH/PUT /customs/1.json
+  # PATCH/PUT /customers/1
+  # PATCH/PUT /customers/1.json
   def update
     respond_to do |format|
-      if @custom.update(custom_params)
-        format.html { redirect_to customs_path, notice: '取引先情報が更新されました。' }
+      if @customer.update(customer_params)
+        format.html { redirect_to customers_path, notice: '取引先情報が更新されました。' }
         format.json { head :no_content }
       else
         format.html { render action: 'edit' }
-        format.json { render json: @custom.errors, status: :unprocessable_entity }
+        format.json { render json: @customer.errors, status: :unprocessable_entity }
       end
     end
   end
 
-  # DELETE /customs/1
-  # DELETE /customs/1.json
+  # DELETE /customers/1
+  # DELETE /customers/1.json
   def destroy
-    @custom.destroy
+    @customer.destroy
     respond_to do |format|
-      format.html { redirect_to customs_url }
+      format.html { redirect_to customers_url }
       format.json { head :no_content }
     end
   end
 
   private
     # Use callbacks to share common setup or constraints between actions.
-    def set_custom
-      @custom = Customer.find(params[:id])
+    def set_customer
+      @customer = Customer.find(params[:id])
     end
 
     # Never trust parameters from the scary internet, only allow the white list through.
-    def custom_params
-      params.require(:custom).permit(:name, :address, :tel, :fax, :president, :zip, :email, :company_id)
+    def customer_params
+      params.require(:customer).permit(:name, :address, :tel, :fax, :president, :zip, :email, :company_id)
     end
 end

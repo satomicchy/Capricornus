@@ -69,6 +69,6 @@ class EstimatesController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def estimate_params
-      params.require(:estimate).permit(:number, :title, :deadline, :requirement, :custom_id, :memo, :summary)
+      params.require(:estimate).permit(:number, :title, :deadline, :requirement, :customer_id, :memo, :summary)
     end
 end

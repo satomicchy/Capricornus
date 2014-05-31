@@ -5,7 +5,7 @@ class CreateEstimates < ActiveRecord::Migration
       t.string :title
       t.date :deadline
       t.string :requirement
-      t.integer :custom_id
+      t.integer :customer_id
       t.text :memo
       t.integer :summary
       t.boolean :cancel

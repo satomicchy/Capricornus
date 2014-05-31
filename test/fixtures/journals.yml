@@ -5,7 +5,7 @@ today:
   finish_at: <%= DateTime.now.midnight + 10.hours %>
   content: もぐもぐ
   city: 大阪市
-  custom_id: 1
+  customer_id: 1
   complete: false
   user: kuma
 
@@ -14,7 +14,7 @@ last_month:
   finish_at: <%= DateTime.now.midnight + 10.hours - 1.month %>
   content: もくもく
   city: 京都市
-  custom_id: 1
+  customer_id: 1
   complete: false
   user: kuma
 
@@ -23,7 +23,7 @@ fishing:
   finish_at: 2013-10-1
   content: 魚釣り
   city: 和歌山市
-  custom: fish_shop
+  customer: fish_shop
   complete: true
   user: kuma
   invoice: october
@@ -33,7 +33,7 @@ not_edit_journal:
   finish_at: 2013-9-1
   content: はちみつ採取
   city: 兵庫県
-  custom: farmers_shop
+  customer: farmers_shop
   complete: true
   user: kuma
   invoice: september_finished

@@ -1,9 +1,9 @@
 class Invoice < ActiveRecord::Base
   has_many :journals, :dependent => :destroy
   has_many :costs, through: :journals
-  belongs_to :custom
+  belongs_to :customer
 
-  validates :ask_on, :deadline, :custom_id, presence: true
+  validates :ask_on, :deadline, :customer_id, presence: true
 
   scope :unfinished_payment, ->(){ where("cancel IS NULL OR cancel = ?", false).where("payment IS NULL OR payment = ?", false) }
 

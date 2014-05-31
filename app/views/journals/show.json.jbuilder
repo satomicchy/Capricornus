@@ -1,4 +1,4 @@
-json.extract! @journal, :content, :city, :custom_id, :complete, :invoice_id, :user_id, :created_at, :updated_at
+json.extract! @journal, :content, :city, :customer_id, :complete, :invoice_id, :user_id, :created_at, :updated_at
 
 json.start_y @journal.start_at.year
 json.start_m @journal.start_at.month

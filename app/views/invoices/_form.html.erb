@@ -21,8 +21,8 @@
       <td><%= f.text_field :deadline, class: "pick_date form-control", size: "10" %></td>
     </tr>
     <tr>
-      <th><%= f.label :custom_id %></th>
-      <td><%= f.select :custom_id, Customer.all.map{|c| [c.name, c.id]} %></td>
+      <th><%= f.label :customer_id %></th>
+      <td><%= f.select :customer_id, Customer.all.map{|c| [c.name, c.id]} %></td>
     </tr>
     <tr>
       <th><%= f.label :payment %></th>

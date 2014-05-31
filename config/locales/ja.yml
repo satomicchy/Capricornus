@@ -209,7 +209,7 @@ ja:
         email: メールアドレス
         password: パスワード
         password_confirmation: パスワード(確認)
-      custom:
+      customer:
         name: 取引先会社名
         address: 住所
         tel: TEL
@@ -230,7 +230,7 @@ ja:
         finish_at: 終業時刻
         content: 内容
         city: 場所
-        custom_id: 取引先
+        customer_id: 取引先
         complete: 作業完了
         invoice_id: 請求書
         estimate_id: 見積書
@@ -244,7 +244,7 @@ ja:
         number: 番号
         ask_on: 請求日
         deadline: 支払期限
-        custom_id: 取引先
+        customer_id: 取引先
         memo: 備考
         summary: 合計額
         payment: 支払済
@@ -254,7 +254,7 @@ ja:
         title: タイトル
         deadline: 期限
         requirement: 条件
-        custom_id: 取引先
+        customer_id: 取引先
         memo: 備考
         summary: 合計額
         cancel: キャンセル

@@ -5,7 +5,7 @@ one:
   title: MyString
   deadline: 2013-10-16
   requirement: MyString
-  custom_id: 1
+  customer_id: 1
   memo: MyText
   summary: 1
 
@@ -14,6 +14,6 @@ two:
   title: MyString
   deadline: 2013-10-16
   requirement: MyString
-  custom_id: 1
+  customer_id: 1
   memo: MyText
   summary: 1

@@ -1,11 +1,11 @@
 # coding: utf-8
 Prawn::Document.send(:include, ActionView::Helpers::NumberHelper)
 
-prawn_document(filename: "#{@invoice.custom.name}様宛請求書#{@invoice.ask_on.try(:strftime, "%Y年%m月%d日")}分.pdf", page_size: "A4") do |pdf|
+prawn_document(filename: "#{@invoice.customer.name}様宛請求書#{@invoice.ask_on.try(:strftime, "%Y年%m月%d日")}分.pdf", page_size: "A4") do |pdf|
   pdf.instance_exec(@invoice) do |invoice|
     company  = Company.all.first
     bank     = Bank.all.first
-    custom   = invoice.custom
+    customer   = invoice.customer
     journals = invoice.journals.order("start_at")
 
     font_families["Kanjikana"] = {:normal => "#{Rails.root}/vendor/assets/fonts/VL-Gothic-Regular.ttf"}
@@ -41,19 +41,19 @@ prawn_document(filename: "#{@invoice.custom.name}様宛請求書#{@invoice.ask_o
       text "TEL:" + "#{company.tel}", align: :right
     end
 
-    #custom
-    custom_x = 0
-    custom_y = 690
+    #customer
+    customer_x = 0
+    customer_y = 690
 
     name_size  = 14
-    name_width = if (/[a-z]/ =~ "#{custom.name}").blank?
-                   "#{custom.name}".size * name_size
+    name_width = if (/[a-z]/ =~ "#{customer.name}").blank?
+                   "#{customer.name}".size * name_size
                  else
-                   "#{custom.name}".size * (name_size / 2)
+                   "#{customer.name}".size * (name_size / 2)
                  end
 
-    text_box "#{custom.name}" + "　御中", at: [custom_x, custom_y], size: name_size
-    line [custom_x, custom_y - 17], [custom_x + name_width + 42, custom_y - 17]
+    text_box "#{customer.name}" + "　御中", at: [customer_x, customer_y], size: name_size
+    line [customer_x, customer_y - 17], [customer_x + name_width + 42, customer_y - 17]
     stroke
 
     #message

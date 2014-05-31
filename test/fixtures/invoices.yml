@@ -4,7 +4,7 @@ october:
   number: MyString
   ask_on: 2013-10-20
   deadline: 2013-10-30
-  custom: fish_shop
+  customer: fish_shop
   memo: MyText
   summary: 500
 
@@ -12,7 +12,7 @@ september_finished:
   number: MyString
   ask_on: 2013-9-20
   deadline: 2013-9-30
-  custom: farmers_shop
+  customer: farmers_shop
   memo: MyText
   summary: 1
   payment: true
@@ -21,7 +21,7 @@ august_finished:
   number: MyString
   ask_on: 2013-8-20
   deadline: 2013-8-31
-  custom: fish_shop
+  customer: fish_shop
   memo: MyText
   summary: 1
   payment: true
