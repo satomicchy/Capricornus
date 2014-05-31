@@ -23,6 +23,7 @@ class CompaniesController < ApplicationController
 
     respond_to do |format|
       if @company.save
+        Member.find_or_create_by(company_id: @company.id, user_id: current_user.id, president: true)
         format.html { redirect_to companies_path, notice: '会社情報が登録されました。' }
         format.json { render action: 'show', status: :created, location: @company }
       else
