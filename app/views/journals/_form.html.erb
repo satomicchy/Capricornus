@@ -14,11 +14,11 @@
   <table class="table">
     <tr>
       <th><%= f.label :start_at %></th>
-      <td><%= f.text_field :start_at, {value: f.object.start_at.try("strftime", "%F %H:%M"), class: "pick_datetime_15 form-control", size: "10"} %></td>
+      <td><%= f.text_field :start_at, {value: f.object.start_at.try("strftime", "%F %H:%M"), class: "pick_datetime_5 form-control", size: "10"} %></td>
     </tr>
     <tr>
       <th><%= f.label :finish_at %></th>
-      <td><%= f.text_field :finish_at, {value: f.object.finish_at.try("strftime", "%F %H:%M"), class: "pick_datetime_15 form-control", size: "10"} %></td>
+      <td><%= f.text_field :finish_at, {value: f.object.finish_at.try("strftime", "%F %H:%M"), class: "pick_datetime_5 form-control", size: "10"} %></td>
     </tr>
     <tr>
       <th><%= f.label :content %></th>

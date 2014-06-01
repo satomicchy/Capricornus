@@ -1,4 +1,10 @@
 jQuery ($) ->
+  $('.pick_datetime_5').datetimepicker
+    format: 'yyyy-mm-dd hh:ii',
+    minuteStep: 5,
+    autoclose: true,
+    language: 'ja'
+
   $('.pick_datetime_15').datetimepicker
     format: 'yyyy-mm-dd hh:ii',
     minuteStep: 15,
