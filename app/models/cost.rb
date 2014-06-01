@@ -7,7 +7,7 @@ class Cost < ActiveRecord::Base
   delegate :payment, to: :invoice, allow_nil: true
   validates :payment, exclusion: {in: [true]}
 
-  UNIT_TYPE = ['ninku', 'dai']
+  UNIT_TYPE = ['ninku', 'dai', 'hour']
 
   after_save do
     journal.invoice.update_summary if journal.invoice_id.present?
