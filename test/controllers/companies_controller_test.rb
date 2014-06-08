@@ -31,6 +31,12 @@ class CompaniesControllerTest < ActionController::TestCase
     assert_response :success
   end
 
+  test "should not update company" do
+    another_company = companies(:usagiya)
+    patch :update, id: another_company, company: { name: "うさぎ屋" }
+    assert_equal another_company.name, another_company.reload.name
+  end
+
   test "should update company" do
     patch :update, id: @company, company: { address: @company.address, email: @company.email, fax: @company.fax, name: @company.name, tel: @company.tel, zip: @company.zip }
     assert_redirected_to companies_path

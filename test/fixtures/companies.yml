@@ -8,3 +8,12 @@ mycompany:
   zip: 000-0001
   email: mori_no_mihari@example.com
   close_day: 20
+
+usagiya:
+  name: 森のレストラン
+  address: 湖のほとり
+  tel: 0120-1111
+  fax: 0120-1112
+  zip: 000-0002
+  email: mori_restrant@example2.com
+  close_day: 31

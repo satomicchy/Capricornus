@@ -1,5 +1,6 @@
 class CompaniesController < ApplicationController
   before_action :set_company, only: [:edit, :update, :destroy]
+  before_action :check_president, only: [:update]
 
   # GET /companies
   # GET /companies.json
@@ -66,5 +67,11 @@ class CompaniesController < ApplicationController
     # Never trust parameters from the scary internet, only allow the white list through.
     def company_params
       params.require(:company).permit(:name, :address, :tel, :fax, :zip, :email, :close_day)
+    end
+
+    def check_president
+      unless @company.members.where(president: true, user_id: current_user.id).exists?
+        redirect_to companies_path
+      end
     end
 end

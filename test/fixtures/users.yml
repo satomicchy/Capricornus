@@ -1,3 +1,7 @@
 kuma:
   name: くまー
   email: kuma@example.com
+
+usagi:
+  name: ピーター
+  email: peter@example2.com
